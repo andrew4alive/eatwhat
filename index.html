@@ -258,7 +258,7 @@ function initMap(){
           var rmap=document.getElementById('rmapholder');
          var rplace = rplace(results);
          var rmarker = new google.maps.Marker({map:map});
-        rmarker.setPosition({rplace.geometry.location});
+        rmarker.setPosition(rplace.geometry.location);
          creatermap(rmap,rplace.place_id);
       
       }
