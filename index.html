@@ -239,7 +239,7 @@ function initMap(){
         
         logm.innerHTML="result find success";
 
-        
+         var rmarker = new google.maps.Marker({map:map});
         startrplace(false,results);
          
        /* for (var i = 0, result; result = results[i]; i++) {
@@ -257,7 +257,7 @@ function initMap(){
           
           var rmap=document.getElementById('rmapholder');
          var rplace1 = rplace(results);
-         var rmarker = new google.maps.Marker({map:map});
+        
         rmarker.setPosition(rplace1.geometry.location);
          creatermap(rmap,rplace1.place_id);
       
