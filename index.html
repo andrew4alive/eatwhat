@@ -256,9 +256,10 @@ function initMap(){
         }
           
           var rmap=document.getElementById('rmapholder');
-         
+         var rplace = rplace(results);
          var rmarker = new google.maps.Marker({map:map});
-         creatermap(rmap,rplace(results));
+        rmarker.setPosition({rplace.geometry.location});
+         creatermap(rmap,rplace.place_id);
       
       }
     
@@ -278,7 +279,7 @@ function initMap(){
       
       function rplace(r){
           var pplaceId = Math.floor(Math.random()*r.length);
-          return r[pplaceId].place_id;
+          return r[pplaceId];
       }
        function creatermap(ele,rid){
            
