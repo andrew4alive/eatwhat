@@ -265,7 +265,7 @@ function initMap(){
           var rmap=document.getElementById('rmapholder');
          var rplace1 = rplace(results);
         
-        rmarker.setPosition(rplace1.geometry.location);
+        rmarker.setPosition(rplace1.place_id);
          creatermap(rmap,rplace1.place_id);
       
       }
