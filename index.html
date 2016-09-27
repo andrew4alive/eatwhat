@@ -239,8 +239,8 @@ function initMap(){
         
         logm.innerHTML="result find success";
 
-         var rmarker = new google.maps.Marker({map:map});
-        startrplace(false,results);
+        var rmarker = new google.maps.Marker({map:map});
+        startrplace(false,results,rmarker);
          
        /* for (var i = 0, result; result = results[i]; i++) {
         
@@ -249,12 +249,16 @@ function initMap(){
       }
     
     
-      function startrplace(log,results){
+      function startrplace(log,results,rmarker){
         if(log==true){
         console.log(results,results.length,typeof(results),rplace(results));
          console.log(results[0].geometry.location);
         }
           
+         
+        
+        
+        
           var rmap=document.getElementById('rmapholder');
          var rplace1 = rplace(results);
         
