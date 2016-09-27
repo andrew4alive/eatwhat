@@ -222,11 +222,11 @@ function initMap(){
   
   logm.innerHTML="finding";
   
-        var request = {
+      
+        service.radarSearch({
           bounds: map.getBounds(),
-          keyword: 'eat opennow'
-        };
-        service.radarSearch(request, cb);
+          keyword: 'eat'
+        }, cb);
       
     
   function cb(results, status) {
