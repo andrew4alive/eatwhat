@@ -239,7 +239,9 @@ function initMap(){
         
         logm.innerHTML="result find success";
 
-        var rmarker = new google.maps.Marker({map:map});
+        var rmarker = new google.maps.Marker();
+    rmaker.setMap(null);
+    rmaker.setmao(map);
         startrplace(false,results,rmarker);
          
        /* for (var i = 0, result; result = results[i]; i++) {
@@ -252,7 +254,7 @@ function initMap(){
       function startrplace(log,results,rmarker){
         if(log==true){
         console.log(results,results.length,typeof(results),rplace(results));
-         console.log(results[0].geometry.location);
+         console.log(results[0].geometry.location,rmaker);
         }
           
          
