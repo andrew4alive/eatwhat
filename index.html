@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<style>
+  
+  
+  html, body {
+        height: 100%;
+        width:100%;
+        margin: 0px;
+        padding: 0px;
+      }
+      .map {
+         float:left;
+        height: 50%;
+        width:50%;
+         margin: 0px;
+        padding: 0px;
+      }
+       #map {
+        height: 100%;
+        width:100%;
+         
+      }
+       .rmap {
+       float:right;
+        height: 50%;
+        width:50%;
+         margin: 0px;
+        padding: 0px;
+      }
+      .rmap{
+          height: 100%;
+        width:100%;
+          
+          
+      }
+      #log{
+          
+         display:none;
+      }
+</style>
+
+</head>
+
+<body>
+    
+    <div  class="container-fluid" id="log">
+        
+        log message :  <span id="logm"></span>
+        
+    </div>
+ 
+      
+<div class="container-fluid map">
+    <div id="map"></div>
+    
+</div>
+   
+   
+ <div class="container-fluid rmap" id="rmapholder" >
+   <!--
+<iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBWu5ezWN1HrruH3LXGI1L9JjcmQmX-Mks
+    &q=place_id:ChIJP-Us_n7MSjARIn3YW7UYe3E" allowfullscreen>
+</iframe>
+-->
+
+</div>  
+
+  <!--javascript-->
+
+
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+  <script>
+   var geo = function(goption) {
+  var self = this;
+  self.coords = null;
+  self.support=false;
+  self.error= false;
+
+ 
+  function g() {
+
+    if (navigator.geolocation) {
+        
+        self.support=true;
+        
+      navigator.geolocation.watchPosition(
+          showPosition,
+      function(e){
+          
+          selft.error=e;
+      }
+      
+      ,
+      goption
+      
+      );
+
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
+
+  
+
+  }
+ 
+
+  function showPosition(position) {
+
+    self.coords = position.coords;
+
+  }
+
+
+  g();
+
+};
+
+
+
+ 
+var geol = new geo({maximunAge: 120000,timeOut:3000});
+
+function gc() {
+  console.log(geol.coords,geol.error);
+  setTimeout(gc, 20000);
+}
+
+
+gc();
+  </script>
+  
+  
+  <script>
+function initMap(){
+    
+  
+ var logm= document.getElementById("logm");
+ 
+ logm.innerHTML="start log";
+  var cord = {};
+  
+
+    
+    if(geol.coords===null){
+        return setTimeout(initMap,500);
+      
+    }else{
+      
+        coordController();
+      
+    }
+      
+    
+ 
+  var map = new google.maps.Map(document.getElementById('map'), {
+          center: mapcenter(),
+          zoom:15 ,
+          scrollwheel:false
+  })
+  map.setOptions({draggable: false});
+  
+  
+   var markeryou = new google.maps.Marker({
+    position: map.getCenter(),
+    icon: {
+      path: google.maps.SymbolPath.CIRCLE,
+      scale: 5,
+      strokeColor: 'blue',
+    
+    },
+    draggable: false,
+    map: map
+  });
+  
+  updatemap();
+  
+  logm.innerHTML="seraching map";
+  //map search
+  
+   var service = new google.maps.places.PlacesService(map);
+  
+  
+  map.addListener('idle', mapF);
+  
+  function mapF(){
+  
+  logm.innerHTML="finding";
+  
+        var request = {
+          bounds: map.getBounds(),
+          keyword: 'eat'
+        };
+        service.radarSearch(request, cb);
+      
+    
+  function cb(results, status) {
+      
+      
+        if (status !== google.maps.places.PlacesServiceStatus.OK) {
+          console.error(status);
+          logm.innerHTML="fail to find map";
+          return;
+        }
+        
+        logm.innerHTML="result find success";
+
+        
+         console.log(results,results.length,typeof(results),rplace(results));
+         console.log(results[0].geometry.location);
+         var rmap=document.getElementById('rmapholder');
+         
+         var rmarker = new google.maps.Marker({map:map});
+         creatermap(rmap,rplace(results));
+         
+       /* for (var i = 0, result; result = results[i]; i++) {
+        
+          addMarker(result);
+        }*/
+      }
+
+      function addMarker(place) {
+        var marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location/*,
+          icon: {
+            url: 'http://maps.gstatic.com/mapfiles/circle.png',
+            anchor: new google.maps.Point(10, 10),
+            scaledSize: new google.maps.Size(10, 17)
+          }*/
+        });
+      }
+      
+      function rplace(r){
+          var pplaceId = Math.floor(Math.random()*r.length);
+          return r[pplaceId].place_id;
+      }
+       function creatermap(ele,rid){
+           
+           ele.innerHTML='<iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBWu5ezWN1HrruH3LXGI1L9JjcmQmX-Mks&q=place_id:'+rid+'"allowfullscreen></iframe>';
+           
+       }
+  
+  }
+  
+  
+  
+  
+  //helper
+  
+  function updatemap(){
+    
+   markeryou.setPosition(markeryoucenter());
+    map.setCenter(mapcenter()); 
+   setTimeout(updatemap,300); 
+    
+  };
+ 
+  function coordController(){
+   
+     cord.latitude=geol.coords.latitude;
+      cord.longitude=geol.coords.longitude;
+      // console.log(typeof(cord.latitude));
+    setTimeout(coordController,0);
+    
+  }
+  
+  function markeryoucenter(){
+      var lat =round(cord.latitude,5);
+      var lng =round(cord.longitude,5);
+      return {lat: lat, lng:lng};
+      
+  }
+  
+  function mapcenter(){
+     // console.log( round(cord.latitude,4) , typeof(cord.latitude) );
+      var dec=3
+      var lat =round(cord.latitude,3);
+      var lng =round(cord.longitude,3);
+      return {lat: lat, lng:lng};
+      
+  }
+  
+  
+
+  
+  
+}
+      
+ function round(value, decimals) {
+  return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+}
+  
+      
+      
+  </script>
+  
+  
+  <script async defer 
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCR-fcDARXL_RqH9AipjGChFIpLDL5lOR8&callback=initMap&libraries=places,visualization">
+  
+</script>
+
+
+
+
+
+</body>
+
+</html>
