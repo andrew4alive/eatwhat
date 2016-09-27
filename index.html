@@ -240,19 +240,28 @@ function initMap(){
         logm.innerHTML="result find success";
 
         
-         console.log(results,results.length,typeof(results),rplace(results));
-         console.log(results[0].geometry.location);
-         var rmap=document.getElementById('rmapholder');
-         
-         var rmarker = new google.maps.Marker({map:map});
-         creatermap(rmap,rplace(results));
+        startrplace(true);
          
        /* for (var i = 0, result; result = results[i]; i++) {
         
           addMarker(result);
         }*/
       }
-
+      function startrplace(log){
+        if(log==true){
+        console.log(results,results.length,typeof(results),rplace(results));
+         console.log(results[0].geometry.location);
+        }
+          
+          var rmap=document.getElementById('rmapholder');
+         
+         var rmarker = new google.maps.Marker({map:map});
+         creatermap(rmap,rplace(results));
+      
+      }
+    
+    
+    
       function addMarker(place) {
         var marker = new google.maps.Marker({
           map: map,
