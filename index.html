@@ -189,7 +189,7 @@ function initMap(){
   
   logm.innerHTML="seraching map";
   //map search
-  
+  var rplaceid=[];
    var service = new google.maps.places.PlacesService(map);
   
   var rmarker = new google.maps.Marker({map:map});
@@ -262,7 +262,17 @@ function initMap(){
         });
       }
       
-      function rplace(r){
+    
+  
+  }
+  
+  
+  
+  
+  //helper
+  
+  
+    function rplace(r){
           var pplaceId = Math.floor(Math.random()*r.length);
           return r[pplaceId];
       }
@@ -274,12 +284,10 @@ function initMap(){
            ele.innerHTML=iframe;
        }
   
-  }
   
   
   
   
-  //helper
   
   function updatemap(){
     
