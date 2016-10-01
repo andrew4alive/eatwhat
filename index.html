@@ -267,10 +267,11 @@ function initMap(){
           return r[pplaceId];
       }
        function creatermap(ele,rid){
-           
-           ele.innerHTML='<iframe  frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBWu5ezWN1HrruH3LXGI1L9JjcmQmX-Mks&origin=' + mapcenter().lat+','+mapcenter().lng  + '
-  &destination=place_id:'+rid+'"allowfullscreen></iframe>';
-           
+           var iframe='<iframe  frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBWu5ezWN1HrruH3LXGI1L9JjcmQmX-Mks&origin=';
+          var ori = markeryoucenter();
+         iframe = iframe + ori.lat+','+ori.lng;
+         iframe = iframe +'&destination=place_id:'+rid+'"allowfullscreen></iframe>';
+           ele.innerHTML=iframe;
        }
   
   }
