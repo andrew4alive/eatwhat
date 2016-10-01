@@ -91,18 +91,39 @@
   
       </div>
       <form>
-        <button type="button" class="col-xs-12 btn btn-primary btn-lg active" style="margin-top:10px;margin-bottom:10px;" id="findrplace">Press Me</button>
+        <button type="button"   data-toggle="modal"  class="col-xs-12 btn btn-primary btn-lg active" style="margin-top:10px;margin-bottom:10px;" id="findrplace">Press Me</button>
   </form>
     </div>
    
    
- <div class="container page" style="display :none;" id="rmapholderp" >
+     <div class="container page" style="display :none;" id="rmapholderp" >
    
-   <div id="rmapholder"></div>
+        <div id="rmapholder"></div>
 
 
-</div>  
+      </div>  
   </div>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  
+  
   <!--javascript-->
 
 
