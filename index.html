@@ -192,7 +192,7 @@ function initMap(){
   var rplaceid=[];
    var service = new google.maps.places.PlacesService(map);
   
-  var rmarker = new google.maps.Marker({map:map});
+ // var rmarker = new google.maps.Marker({map:map});
 
   map.addListener('idle', mapF);
   
@@ -223,11 +223,11 @@ function initMap(){
       
     
     
-      function startrplace(log,results,rmarker){
-        if(log==true){
+      function startrplace(results,rmarker){
+        
         console.log(results,results.length,typeof(results),rplace(results));
          console.log(results[0].geometry.location,rmaker);
-        }
+        
       }
          
         
@@ -249,7 +249,7 @@ function initMap(){
     
     
       
-    
+  }
   
   }
   
@@ -319,7 +319,7 @@ function initMap(){
 
   
   
-}
+
       
  function round(value, decimals) {
   return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
