@@ -143,7 +143,7 @@
   setTimeout(gc, 10000);
 }
     
- // gc();//log current location  
+ 
 function initMap(){
     
   
@@ -219,14 +219,7 @@ function initMap(){
         logm.innerHTML="result find success";
 
         
-      //  rmarker.setMap(null);
-       // rmarker.setMap(map);
-       // startrplace(false,results,rmarker);
-         
-       /* for (var i = 0, result; result = results[i]; i++) {
-        
-          addMarker(result);
-        }*/
+    
       }
     
     
@@ -242,13 +235,12 @@ function initMap(){
         
           var rmap=document.getElementById('rmapholder');
          var rplace1 = rplace(results);
-        //letgo(document.getElementById('letgo'),rplace1.place_id);
-       // rmarker.setPlace(google.maps.MarketPlace({placeId:rplace1.place_id}));
+        
          createrplace(rmap,rplace1.place_id);
       
       }
     
-    function letgo(ele,rid){
+    function letgo(ele,rid){// let go button
     var uc=markeryoucenter();
          ele.onclick=function(){
            window.open('https://www.google.com.my/maps/dir'+uc.lat+','+uc.lng+'/'+'place_id:'+rid);
