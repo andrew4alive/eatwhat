@@ -220,7 +220,7 @@ function initMap(){
 
         
     
-      }
+      
     
     
       function startrplace(log,results,rmarker){
@@ -228,7 +228,7 @@ function initMap(){
         console.log(results,results.length,typeof(results),rplace(results));
          console.log(results[0].geometry.location,rmaker);
         }
-          
+      }
          
         
         
@@ -238,7 +238,7 @@ function initMap(){
         
          createrplace(rmap,rplace1.place_id);
       
-      }
+      
     
     function letgo(ele,rid){// let go button
     var uc=markeryoucenter();
@@ -247,17 +247,7 @@ function initMap(){
          };
     }
     
-      function addMarker(place) {
-        var marker = new google.maps.Marker({
-          map: map,
-          position: place.geometry.location/*,
-          icon: {
-            url: 'http://maps.gstatic.com/mapfiles/circle.png',
-            anchor: new google.maps.Point(10, 10),
-            scaledSize: new google.maps.Size(10, 17)
-          }*/
-        });
-      }
+    
       
     
   
