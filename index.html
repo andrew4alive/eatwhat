@@ -111,7 +111,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-       <!-- <button type="button" class="btn btn-primary" id="letgo">Let Go</button>-->
+        <button type="button" class="btn btn-primary" id="pickagain">Pick Again</button>
       </div>
     </div>
   </div>
@@ -238,7 +238,13 @@ function initMap(){
         
          createrplace(rmap,rplace1.place_id);
       
-      
+        document.getElementById('pickagain').onclick=function(){
+          var rmap=document.getElementById('rmapholder');
+         var rplace1 = rplace(results);
+        
+         createrplace(rmap,rplace1.place_id);
+        };
+    
     
     function letgo(ele,rid){// let go button
     var uc=markeryoucenter();
