@@ -242,13 +242,18 @@ function initMap(){
         
           var rmap=document.getElementById('rmapholder');
          var rplace1 = rplace(results);
-        
+        letgo(document.getElementById('letgo'),rplace1.place_id);
        // rmarker.setPlace(google.maps.MarketPlace({placeId:rplace1.place_id}));
          createrplace(rmap,rplace1.place_id);
       
       }
     
-    
+    function letgo(ele,rid){
+    var uc=markeryoucenter();
+         ele.onclick=function(){
+           window.open('https://www.google.com.my/maps/dir'+uc.lat+','+uc.lng+'/'+'place_id:'+rid);
+         };
+    }
     
       function addMarker(place) {
         var marker = new google.maps.Marker({
@@ -281,6 +286,7 @@ function initMap(){
           
          iframe = iframe +'place_id:'+rid+'"allowfullscreen></iframe>';
            ele.innerHTML=iframe;
+        
        }
   
    function createrdir(ele,rid){
