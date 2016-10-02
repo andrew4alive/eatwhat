@@ -111,8 +111,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <!--<button type="button" class="btn btn-primary">Save changes</button>
-      --></div>
+        <button type="button" class="btn btn-primary" id="letgo">Let Go</button>
+      </div>
     </div>
   </div>
 </div>
@@ -244,7 +244,7 @@ function initMap(){
          var rplace1 = rplace(results);
         
        // rmarker.setPlace(google.maps.MarketPlace({placeId:rplace1.place_id}));
-         creatermap(rmap,rplace1.place_id);
+         createrplace(rmap,rplace1.place_id);
       
       }
     
@@ -276,15 +276,20 @@ function initMap(){
           var pplaceId = Math.floor(Math.random()*r.length);
           return r[pplaceId];
       }
-       function creatermap(ele,rid){
+       function createrplace(ele,rid){
+           var iframe='<iframe  frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBWu5ezWN1HrruH3LXGI1L9JjcmQmX-Mks&q=';
+          
+         iframe = iframe +'place_id:'+rid;
+           ele.innerHTML=iframe;
+       }
+  
+   function createrdir(ele,rid){
            var iframe='<iframe  frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyBWu5ezWN1HrruH3LXGI1L9JjcmQmX-Mks&origin=';
           var ori = markeryoucenter();
          iframe = iframe + ori.lat+','+ori.lng;
          iframe = iframe +'&destination=place_id:'+rid+'"allowfullscreen></iframe>';
            ele.innerHTML=iframe;
        }
-  
-  
   
   
   
