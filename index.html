@@ -149,7 +149,9 @@
   console.log(geol.coords,geol.error);
   setTimeout(gc, 10000);
 }
-    
+    $("form").submit(function(event) { // You can change "form" to whatever ID/class your form has
+    event.preventDefault();
+}
  
 function initMap(){
     
