@@ -214,10 +214,12 @@ function initMap(){
   function mapFS(){
     var ky = document.getElementById('keyw').value;
     console.log(ky);
+     var keyword =['eat'];
+    
     service.nearbySearch(
       {//search param
         bounds:map.getBounds(),
-        keyword:['eat'],
+        keyword:keyword,
         openNow:true
     
     
