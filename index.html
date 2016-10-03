@@ -254,22 +254,28 @@ function initMap(){
           var rplace1 = rplace(nplaceid);
         
          createrplace(rmap,rplace1.place_id);
-        
+        if(window.navigator.userAgent.indexOf("Edge") > -1){
+          console.log({lat:llw.lat,lng:llw.lng});
+          console.log({lat:llw.lat(),lng:llw.lng()});
+          w10map(w10ele,{lat:llw.lat,lng:llw.lng});
+          }
          
           pickagainbutton.onclick=function(){
           var rplace1 = rplace(nplaceid);
         
          createrplace(rmap,rplace1.place_id);
-          };
-          
-          var llw=rplace1.geometry.location;
-          
-         
           if(window.navigator.userAgent.indexOf("Edge") > -1){
           console.log({lat:llw.lat,lng:llw.lng});
           console.log({lat:llw.lat(),lng:llw.lng()});
           w10map(w10ele,{lat:llw.lat,lng:llw.lng});
           }
+            
+          };
+          
+          var llw=rplace1.geometry.location;
+          
+         
+          
         
         }
         
