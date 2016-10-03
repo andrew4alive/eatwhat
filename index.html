@@ -125,7 +125,7 @@
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
+  <script src="http://underscorejs.org/underscore-min.js"></script>
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
@@ -215,13 +215,18 @@ function initMap(){
           }
             // status ok 
           //console.log(r);
-        
+        var rs =[]
           if(p.hasNextPage){//inde]x page
             
-                nplaceid.push(r);     
+                rs.push(r);     
                p.nextPage();
           }
-        else{console.log(nplaceid);}
+        else{
+          nplaceid = _.flatten(ts);
+          console.log(nplaceid);
+        
+        
+        }
         
         
     });//end search 
