@@ -257,7 +257,7 @@ function initMap(){
           $.map(r,function(n){
           nplaceid.push( n);
           });
-        //  console.log(nplaceid);
+          console.log(nplaceid);
           
          rex();
          
@@ -342,6 +342,7 @@ function initMap(){
   
     function rplace(r){
           var pplaceId = Math.floor(Math.random()*r.length);
+      console.log(pplaceId);
           return r[pplaceId];
       }
   
