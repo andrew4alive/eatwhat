@@ -220,16 +220,19 @@ function initMap(){
     
     
       },function(r,s,p){//start search
+         var rmap=document.getElementById('rmapholder');
+        
           if(s!==google.maps.places.PlacesServiceStatus.OK){// sheck status
             console.error(status);
+            rmap.innerHTML='';
            document.getElementById('noplacefound').innerHTML='Try Zoom out , no place to eat nearby';
             return;
           }
             // status ok 
           //console.log(r);
         document.getElementById('noplacefound').innerHTML='';
-        var rmap=document.getElementById('rmapholder');
-        rmap.innerHTML='';
+        
+        
         var rs =[]
           if(p.hasNextPage){//inde]x page
             
