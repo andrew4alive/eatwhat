@@ -213,7 +213,9 @@ function initMap(){
   //nearby search function
   function mapFS(){
     var ky = document.getElementById('keyw').value;
-    console.log(ky.split(" "));
+    ky = ky.trim();
+    ky= ky.split("");
+    console.log(ky);
      var keyword =['eat'];
     
     service.nearbySearch(
@@ -252,7 +254,7 @@ function initMap(){
           $.map(r,function(n){
           nplaceid.push( n);
           });
-          console.log(nplaceid);
+        //  console.log(nplaceid);
           
          rex();
          
