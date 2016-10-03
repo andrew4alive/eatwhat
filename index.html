@@ -230,10 +230,14 @@ function initMap(){
           var rplace1 = rplace(nplaceid);
         
          createrplace(rmap,rplace1.place_id);
-        var letgobutton = document.getElementById('letgo');
+        var pickagainbutton = document.getElementById('pickagain');
          
+          pickagainbutton.onclick=function(){
+          var rplace1 = rplace(nplaceid);
+        
+         createrplace(rmap,rplace1.place_id);
+          };
           
-          letgo(letgobutton,rplace1);
         
         
         }
