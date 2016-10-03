@@ -221,17 +221,18 @@ function initMap(){
     
       },function(r,s,p){//start search
          var rmap=document.getElementById('rmapholder');
-        
+        var pickagainbutton = document.getElementById('pickagain');
           if(s!==google.maps.places.PlacesServiceStatus.OK){// sheck status
             console.error(status);
             rmap.innerHTML='';
            document.getElementById('noplacefound').innerHTML='Try Zoom out , no place to eat nearby';
+            pickagainbutton.disabled=true;
             return;
           }
             // status ok 
           //console.log(r);
         document.getElementById('noplacefound').innerHTML='';
-        
+        pickagainbutton.disabled=false;
         
         var rs =[]
           if(p.hasNextPage){//inde]x page
@@ -249,7 +250,7 @@ function initMap(){
           var rplace1 = rplace(nplaceid);
         
          createrplace(rmap,rplace1.place_id);
-        var pickagainbutton = document.getElementById('pickagain');
+        
          
           pickagainbutton.onclick=function(){
           var rplace1 = rplace(nplaceid);
