@@ -228,7 +228,8 @@ function initMap(){
             // status ok 
           //console.log(r);
         document.getElementById('noplacefound').innerHTML='';
-        
+        var rmap=document.getElementById('rmapholder');
+        rmap.innerHTML='';
         var rs =[]
           if(p.hasNextPage){//inde]x page
             
@@ -241,7 +242,7 @@ function initMap(){
           nplaceid.push( n);
           });
           console.log(nplaceid);
-          var rmap=document.getElementById('rmapholder');
+          
           var rplace1 = rplace(nplaceid);
         
          createrplace(rmap,rplace1.place_id);
