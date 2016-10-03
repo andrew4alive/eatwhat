@@ -214,10 +214,13 @@ function initMap(){
   function mapFS(){
     var ky = document.getElementById('keyw').value;
     ky = ky.trim();
-    ky= ky.split("");
+    ky= ky.split(" ");
     console.log(ky);
      var keyword =['eat'];
-    
+    $.map(ky,function(n){
+        keyword.push(n);
+    });
+    console.log(keyword);
     service.nearbySearch(
       {//search param
         bounds:map.getBounds(),
