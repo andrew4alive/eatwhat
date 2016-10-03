@@ -222,9 +222,12 @@ function initMap(){
       },function(r,s,p){//start search
          var rmap=document.getElementById('rmapholder');
         var pickagainbutton = document.getElementById('pickagain');
+        
+        var w10ele =document.getElementById('w10map');
           if(s!==google.maps.places.PlacesServiceStatus.OK){// sheck status
             console.error(status);
             rmap.innerHTML='';
+            w10ele.innerHTML='';
            document.getElementById('noplacefound').innerHTML='Try Zoom out , no place to eat nearby';
             pickagainbutton.disabled=true;
             return;
@@ -262,7 +265,7 @@ function initMap(){
           
           console.log({lat:llw.lat,lng:llw.lng});
           console.log({lat:llw.lat(),lng:llw.lng()});
-          w10map(document.getElementById('w10map'),{lat:llw.lat,lng:llw.lng});
+          w10map(w10ele,{lat:llw.lat,lng:llw.lng});
         
         
         }
@@ -306,10 +309,10 @@ function initMap(){
   }
    function w10map(ele,to){//window 10 map button create
      
-     var map= '<a class="btn btn-default" href="';
+     var map= '<a class="btn btn-default col-cs.12" href="';
      var url ='http://bing.com/maps/default.aspx?rtp=~pos.'+to.lat()+'_'+to.lng();
      map = map + url;
-     map=  map+'" role="button">Link</a>';
+     map=  map+'" role="button">Use window 10 Maps app</a>';
    ele.innerHTML=map;
    
    }
