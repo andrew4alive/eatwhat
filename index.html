@@ -218,7 +218,7 @@ function initMap(){
     var ky = document.getElementById('keyw').value;
     ky = ky.trim();
     ky= ky.split(" ");
-    console.log(ky);
+ 
      var keyword =['eat'];
     $.map(ky,function(n){
         keyword.push(n);
@@ -251,7 +251,7 @@ function initMap(){
         console.log(r);
         for(var i=0;i<r.length;i++)
                  rs.push(r[i]);
-            console.log(rs);
+           
           if(p.hasNextPage){//inde]x page
             
               
@@ -259,7 +259,7 @@ function initMap(){
           }
         else{
           nplaceid=[];
-          $.map(r,function(n){
+          $.map(rs,function(n){
           nplaceid.push( n);
           });
           console.log(nplaceid);
