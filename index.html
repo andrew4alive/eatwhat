@@ -77,14 +77,15 @@
       
 <div class="container page" id="mapp">
   
-  <!--<form class="form-horizontal" >
+  <form class="form-horizontal" >
     <div class="form-group">
     
-      <div class="col-sm-12">
-    <input type="text" class="form-control" id="geoinpu" placeholder="Your Location" >
+      <div class="col-xs-12">
+        <label class="sr-only" for="keyw">Search Critirial</label><input type="text" class="form-control" id="keyw" placeholder="Your Location" >
+        <div class="input-group-addon" id="keywclr">Clear</div>
       </div>
       </div>
-</form>-->    
+</form>    
     
     <div width="60%" height="100%"  style="width:100%;height:70%" id="map">
    
@@ -212,7 +213,8 @@ function initMap(){
   
   //nearby search function
   function mapFS(){
-  
+    var ky = document.getElementById('keyw').value;
+    console.log(ky);
     service.nearbySearch(
       {//search param
         bounds:map.getBounds(),
