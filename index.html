@@ -109,6 +109,8 @@
         <h4 class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Let Go Here!!</h4>
       </div>
       <div class="modal-body" >
+        
+        <span id="noplacefound"> </span>
           <div id="rmapholder" ></div>
           <!-- for window 10 button using map app-->
         <div class="container" id ="w10map"></div>
@@ -220,10 +222,13 @@ function initMap(){
       },function(r,s,p){//start search
           if(s!==google.maps.places.PlacesServiceStatus.OK){// sheck status
             console.error(status);
+           document.getElementById('noplacefound').innerHTML='Try Zoom out , no place to eat nearby';
             return;
           }
             // status ok 
           //console.log(r);
+        document.getElementById('noplacefound').innerHTML='';
+        
         var rs =[]
           if(p.hasNextPage){//inde]x page
             
