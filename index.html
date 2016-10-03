@@ -110,7 +110,7 @@
       </div>
       <div class="modal-body" >
         
-        <span class="container-fluid" id="noplacefound"> </span>
+        <div class="container-fluid" id="noplacefound"> </div>
           <div id="rmapholder" ></div>
           <!-- for window 10 button using map app-->
         <div class="container" id ="w10map"></div>
@@ -263,10 +263,12 @@ function initMap(){
           
           var llw=rplace1.geometry.location;
           
+         
+          if(window.navigator.userAgent.indexOf("Edge") > -1){
           console.log({lat:llw.lat,lng:llw.lng});
           console.log({lat:llw.lat(),lng:llw.lng()});
           w10map(w10ele,{lat:llw.lat,lng:llw.lng});
-        
+          }
         
         }
         
