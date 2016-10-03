@@ -190,13 +190,43 @@ function initMap(){
   logm.innerHTML="seraching map";
   //map search
   var rplaceid=[];
+  
+  var nplaceid=[];
    var service = new google.maps.places.PlacesService(map);
   
  // var rmarker = new google.maps.Marker({map:map});
 
-  map.addListener('idle', mapF);
+  map.addListener('idle', mapFR);
+  map.addListener('idle', mapFS);
+  //nearby search function
+  function mapFS(){
   
-  function mapF(){
+    service.nearbySearch(
+      {//search param
+        bounds:map.getBounds(),
+        keyword:'eat',
+        openNow:true
+    
+    
+      },function(r,s,p){//start search
+          if(s!==google.maps.places.PlacesServiceStatus.OK){// sheck status
+            console.error(status);
+            return;
+          }
+            // status ok 
+          console.log(r);
+        
+    
+    });
+  
+  
+  }
+  // end nearby search function
+  
+  
+  //rador search
+  
+  function mapFR(){
   
   logm.innerHTML="finding";
   
@@ -222,41 +252,41 @@ function initMap(){
     
       
     
-    
-      function startrplace(results,rmarker){
+                                                                    
+          function startrplace(results,rmarker){//console log function 
         
-        console.log(results,results.length,typeof(results),rplace(results));
-         console.log(results[0].geometry.location,rmaker);
+          console.log(results,results.length,typeof(results),rplace(results));
+           console.log(results[0].geometry.location,rmaker);
         
-      }
+          }
          
         
         
         
           var rmap=document.getElementById('rmapholder');
-         var rplace1 = rplace(results);
+          var rplace1 = rplace(results);
         
          createrplace(rmap,rplace1.place_id);
       
-        document.getElementById('pickagain').onclick=function(){
-          var rmap=document.getElementById('rmapholder');
-         var rplace1 = rplace(results);
+          document.getElementById('pickagain').onclick=function(){
+            var rmap=document.getElementById('rmapholder');
+            var rplace1 = rplace(results);
         
-         createrplace(rmap,rplace1.place_id);
-        };
+              createrplace(rmap,rplace1.place_id);
+            };
     
     
-    function letgo(ele,rid){// let go button
-    var uc=markeryoucenter();
-         ele.onclick=function(){
-           window.open('https://www.google.com.my/maps/dir'+uc.lat+','+uc.lng+'/'+'place_id:'+rid);
-         };
+          function letgo(ele,rid){// let go button
+            var uc=markeryoucenter();
+            ele.onclick=function(){
+             window.open('https://www.google.com.my/maps/dir'+uc.lat+','+uc.lng+'/'+'place_id:'+rid);
+           };
+      }
+    
+    
+      
     }
-    
-    
-      
-  }
-  
+  //radar search end
   }
   
 
