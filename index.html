@@ -242,9 +242,36 @@ function initMap(){
   }
   // end nearby search function
   
+  // element function
   
+       function createrplace(ele,rid){//create emebed map to element
+           var iframe='<iframe  frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBWu5ezWN1HrruH3LXGI1L9JjcmQmX-Mks&q=';
+          
+         iframe = iframe +'place_id:'+rid+'"allowfullscreen></iframe>';
+           ele.innerHTML=iframe;
+        
+       }
   
+   function createrdir(ele,rid){//create emebed diretcion to element
+           var iframe='<iframe  frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyBWu5ezWN1HrruH3LXGI1L9JjcmQmX-Mks&origin=';
+          var ori = markeryoucenter();
+         iframe = iframe + ori.lat+','+ori.lng;
+         iframe = iframe +'&destination=place_id:'+rid+'"allowfullscreen></iframe>';
+           ele.innerHTML=iframe;
+       }
   
+  function letgo(ele,r){//create let go button diredction
+      ele.onclick=function(){
+        
+        var ull= markeryoucenter();
+        
+        var gmapdir= 'https://www.google.com.my/maps/dir/';
+        var gmapdir= gmapdir +ull.lat+','+ull.lng+'/';//add ori position
+        var gmapdir= gmapdir +r.geometry.location.lat+','+r.geometry.location.lng;
+        
+        window.open(gmapdir);
+      };
+  }
   
 
   
@@ -256,21 +283,7 @@ function initMap(){
           var pplaceId = Math.floor(Math.random()*r.length);
           return r[pplaceId];
       }
-       function createrplace(ele,rid){
-           var iframe='<iframe  frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBWu5ezWN1HrruH3LXGI1L9JjcmQmX-Mks&q=';
-          
-         iframe = iframe +'place_id:'+rid+'"allowfullscreen></iframe>';
-           ele.innerHTML=iframe;
-        
-       }
   
-   function createrdir(ele,rid){
-           var iframe='<iframe  frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyBWu5ezWN1HrruH3LXGI1L9JjcmQmX-Mks&origin=';
-          var ori = markeryoucenter();
-         iframe = iframe + ori.lat+','+ori.lng;
-         iframe = iframe +'&destination=place_id:'+rid+'"allowfullscreen></iframe>';
-           ele.innerHTML=iframe;
-       }
   
   
   
