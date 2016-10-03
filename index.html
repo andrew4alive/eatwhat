@@ -195,7 +195,7 @@ function initMap(){
   
  // var rmarker = new google.maps.Marker({map:map});
 
-  map.addListener('idle', mapFR);
+  //map.addListener('idle', mapFR);
   map.addListener('idle', mapFS);
   //nearby search function
   function mapFS(){
@@ -221,10 +221,16 @@ function initMap(){
                p.nextPage();
           }
         else{
+          nplaceid=[];
           $.map(r,function(n){
           nplaceid.push( n);
           });
           console.log(nplaceid);
+          var rmap=document.getElementById('rmapholder');
+          var rplace1 = rplace(nplaceid);
+        
+         createrplace(rmap,rplace1.place_id);
+          
         
         
         }
