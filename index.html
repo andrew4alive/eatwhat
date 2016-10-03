@@ -200,14 +200,16 @@ function initMap(){
   
   var nplaceid=[];
    var service = new google.maps.places.PlacesService(map);
-  
+      var ky = document.getElementById('keyw').value;
  // var rmarker = new google.maps.Marker({map:map});
   //event
   //map.addListener('idle', mapFR);
   //map.addListener('idle', mapFS);
    
   $('#myModal').on('show.bs.modal',mapFS);
-  
+  document.getElementById('keyw').onclick=function(){
+    ky='';
+  };
   //end event
   
   //nearby search function
@@ -219,7 +221,7 @@ function initMap(){
     ky = ky.trim();
     ky= ky.split(" ");
  
-     var keyword =['eat','openNow'];
+     var keyword =['eat'];
     $.map(ky,function(n){
         keyword.push(n);
     });
@@ -232,7 +234,7 @@ function initMap(){
       //  radius:50000,
         //type:
         keyword:keyword,
-       // openNow:true
+        openNow:true
     
     
       },function(r,s,p){//start search
