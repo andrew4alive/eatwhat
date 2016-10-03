@@ -264,7 +264,7 @@ function initMap(){
            var llw=rplace1.geometry.location;
            createrplace(rmap,rplace1.place_id);
           if(window.navigator.userAgent.indexOf("Edge") > -1)
-             w10map(w10ele,{lat:llw.lat,lng:llw.lng});
+             w10mapapp(w10ele,{lat:llw.lat,lng:llw.lng});
           
           }
          
@@ -318,7 +318,15 @@ function initMap(){
    ele.innerHTML=map;
    
    }
-
+  function w10mapapp(ele,to){//window 10 map button create
+     
+     var map= '<a class="btn btn-warning col-cs.12" target="_blank" href="';
+     var url ='bingmaps:?rtp=~pos.'+to.lat()+'_'+to.lng();
+     map = map + url;
+     map=  map+'" role="button">Use window 10 Maps app</a>';
+   ele.innerHTML=map;
+   
+   }
   
   
   //helper
