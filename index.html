@@ -214,11 +214,18 @@ function initMap(){
             return;
           }
             // status ok 
-          console.log(r);
+          //console.log(r);
         
+          if(p.hasNextPage){//inde]x page
+            
+                nplaceid.push(r);     
+               p.nextPage();
+          }
+        else{console.log(nplaceid);}
+        
+        
+    });//end search 
     
-    });
-  
   
   }
   // end nearby search function
