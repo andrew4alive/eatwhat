@@ -226,10 +226,11 @@ function initMap(){
     console.log(keyword);
     service.nearbySearch(
       {//search param
-       // bounds:map.getBounds(),
+        bounds:map.getBounds(),
         
-        location:map.getCenter(),
-        radius:50000,
+    //    location:map.getCenter(),
+      //  radius:50000,
+        //type:
         keyword:keyword,
         openNow:true
     
