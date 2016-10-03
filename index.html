@@ -249,6 +249,9 @@ function initMap(){
           };
           
           var llw=rplace1.geometry.location;
+          
+          console.log({lat:llw.lat,lng:llw.lng});
+          console.log({lat:llw.lat(),lng:llw.lng()});
           w10map(document.getElementById('w10map'),{lat:llw.lat,lng:llw.lng});
         
         
