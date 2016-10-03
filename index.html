@@ -110,7 +110,8 @@
       </div>
       <div class="modal-body" >
         
-        <div class="container-fluid" id="noplacefound"> </div>
+        <form id="noplacefound"> </form>
+        
           <div id="rmapholder" ></div>
           <!-- for window 10 button using map app-->
         <div class="container" id ="w10map"></div>
@@ -311,7 +312,7 @@ function initMap(){
   }
    function w10map(ele,to){//window 10 map button create
      
-     var map= '<a class="btn btn-warning col-cs.12" href="';
+     var map= '<a class="btn btn-warning col-cs.12" target="_blank" href="';
      var url ='http://bing.com/maps/default.aspx?rtp=~pos.'+to.lat()+'_'+to.lng();
      map = map + url;
      map=  map+'" role="button">Use window 10 Maps app</a>';
