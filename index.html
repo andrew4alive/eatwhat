@@ -110,6 +110,9 @@
       </div>
       <div class="modal-body" >
           <div id="rmapholder" ></div>
+          <!-- for window 10 button using map app-->
+        <div class="container" id ="w10map"></div>
+            <!--end map app trigger-->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -245,6 +248,8 @@ function initMap(){
          createrplace(rmap,rplace1.place_id);
           };
           
+          var llw=rplace1.geometry.location;
+          w10map(document.getElemetById('w10map'),{lat:llw.lat,lng:llw.lng});
         
         
         }
@@ -286,7 +291,15 @@ function initMap(){
         window.open(gmapdir);
       };
   }
-  
+   function w10map(ele,to){
+     
+     var map= '<a class="btn btn-default" href=";
+     var url ='http://bing.com/maps/default.aspx?rtp=pos.'+to.lat+'_'+to.lng;
+     map = map + url;
+     map=  map+'" role="button">Link</a>';
+   ele.innerHTML=map;
+   
+   }
 
   
   
