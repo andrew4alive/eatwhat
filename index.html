@@ -252,7 +252,8 @@ function initMap(){
        
           if(p.hasNextPage){//inde]x page
             
-                rs.push(r);     
+               for(var i=0:i<r.length:i++)
+                 rs.push(r[i]);
             console.log(rs);
                p.nextPage();
           }
