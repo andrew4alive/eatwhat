@@ -249,12 +249,12 @@ function initMap(){
         document.getElementById('noplacefound').innerHTML='';
         pickagainbutton.disabled=false;
         console.log(r);
-       
-          if(p.hasNextPage){//inde]x page
-            
-               for(var i=0;i<r.length;i++)
+        for(var i=0;i<r.length;i++)
                  rs.push(r[i]);
             console.log(rs);
+          if(p.hasNextPage){//inde]x page
+            
+              
                p.nextPage();
           }
         else{
