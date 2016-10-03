@@ -205,7 +205,7 @@ function initMap(){
   //event
   //map.addListener('idle', mapFR);
   //map.addListener('idle', mapFS);
-   var rs =[];
+   
   $('#myModal').on('show.bs.modal',mapFS);
   
   //end event
@@ -249,7 +249,7 @@ function initMap(){
         document.getElementById('noplacefound').innerHTML='';
         pickagainbutton.disabled=false;
         
-        
+        var rs =[];
           if(p.hasNextPage){//inde]x page
             
                 rs.push(r);     
@@ -257,7 +257,7 @@ function initMap(){
           }
         else{
           nplaceid=[];
-          $.map(rs,function(n){
+          $.map(r,function(n){
           nplaceid.push( n);
           });
           console.log(nplaceid);
