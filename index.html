@@ -196,9 +196,14 @@ function initMap(){
    var service = new google.maps.places.PlacesService(map);
   
  // var rmarker = new google.maps.Marker({map:map});
-
+  //event
   //map.addListener('idle', mapFR);
-  map.addListener('idle', mapFS);
+  //map.addListener('idle', mapFS);
+  
+  $('#myModal').on('show.bs.modal',mapFS);
+  
+  //end event
+  
   //nearby search function
   function mapFS(){
   
