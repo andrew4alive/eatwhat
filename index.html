@@ -212,6 +212,9 @@ function initMap(){
   
   //nearby search function
   function mapFS(){
+    var rs =[];
+    
+    
     var ky = document.getElementById('keyw').value;
     ky = ky.trim();
     ky= ky.split(" ");
@@ -246,7 +249,7 @@ function initMap(){
         document.getElementById('noplacefound').innerHTML='';
         pickagainbutton.disabled=false;
         
-        var rs =[]
+        
           if(p.hasNextPage){//inde]x page
             
                 rs.push(r);     
