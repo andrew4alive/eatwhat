@@ -254,21 +254,17 @@ function initMap(){
           var rplace1 = rplace(nplaceid);
         
          createrplace(rmap,rplace1.place_id);
-        if(window.navigator.userAgent.indexOf("Edge") > -1){
-          console.log({lat:llw.lat,lng:llw.lng});
-          console.log({lat:llw.lat(),lng:llw.lng()});
+        //if(window.navigator.userAgent.indexOf("Edge") > -1)
           w10map(w10ele,{lat:llw.lat,lng:llw.lng});
-          }
+          
          
           pickagainbutton.onclick=function(){
           var rplace1 = rplace(nplaceid);
         
          createrplace(rmap,rplace1.place_id);
-          if(window.navigator.userAgent.indexOf("Edge") > -1){
-          console.log({lat:llw.lat,lng:llw.lng});
-          console.log({lat:llw.lat(),lng:llw.lng()});
-          w10map(w10ele,{lat:llw.lat,lng:llw.lng});
-          }
+         // if(window.navigator.userAgent.indexOf("Edge") > -1)
+             w10map(w10ele,{lat:llw.lat,lng:llw.lng});
+          
             
           };
           
