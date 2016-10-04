@@ -224,7 +224,21 @@ function initMap(){
     
  
      var keyword =['eat'];
- 
+      service.radarSearch({
+           bounds:map.getBounds(),
+        keyword:keyword,
+        openNow:true
+      },function(r,s){
+        
+         if(s!==google.maps.places.PlacesServiceStatus.OK){// sheck status
+            console.error(status);
+            return;
+          }
+        console.log(r);
+        
+        
+        
+      });
 
     service.nearbySearch(
       {//search param
@@ -292,23 +306,7 @@ function initMap(){
           
           }
           
-          function filterByPlaceName(place,name){
-              var pl=[];
-            
-               var lname = name.toLowerCase();
-                
-               for(var i=0;i<place.length;i++){ 
-                    var ln = place[i].name.toLowerCase();
-                  
-                
-                     if(ln.indexOf(lname)>-1){
-                          pl.push(place[i]);
-                     }
-                 
-                 
-                   }
-              return pl;
-          }
+        
           
         
         }
@@ -371,7 +369,23 @@ function initMap(){
   
   
   //helper
-  
+    function filterByPlaceName(place,name){
+              var pl=[];
+            
+               var lname = name.toLowerCase();
+                
+               for(var i=0;i<place.length;i++){ 
+                    var ln = place[i].name.toLowerCase();
+                  
+                
+                     if(ln.indexOf(lname)>-1){
+                          pl.push(place[i]);
+                     }
+                 
+                 
+                   }
+              return pl;
+          }
   
     function rplace(r){
           var pplaceId = Math.floor(Math.random()*r.length);
