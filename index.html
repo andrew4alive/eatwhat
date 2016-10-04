@@ -227,17 +227,18 @@ function initMap(){
       service.radarSearch({
            bounds:map.getBounds(),
         keyword:keyword,
-        openNow:true
+        openNow:true,
+        name:ky
       },function(r,s){
-        var radarplace=[]
+       // var radarplace=[]
          if(s!==google.maps.places.PlacesServiceStatus.OK){// sheck status
             console.error(status);
             return;
           }
         console.log(r);
         
-        radarplace=filterByPlaceName(r,ky);
-        console.log(radarplace);
+       // radarplace=filterByPlaceName(r,ky);
+       // console.log(radarplace);
         
         
       });
