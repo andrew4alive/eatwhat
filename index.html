@@ -221,20 +221,16 @@ function initMap(){
      
     var ky = document.getElementById('keyw').value;
     ky = ky.trim();
-    //ky= ky.split(" ");
+    
  
      var keyword =['eat'];
-   /* $.map(ky,function(n){
-        keyword.push(n);
-    });*/
-    console.log(keyword);
+ 
+
     service.nearbySearch(
       {//search param
         bounds:map.getBounds(),
         
-    //    location:map.getCenter(),
-      //  radius:50000,
-        //type:
+
         keyword:keyword,
         openNow:true
     
@@ -267,9 +263,7 @@ function initMap(){
           }
         else{
        
-         /* $.map(rs,function(n){
-           nplaceid.push( n);
-          });*/
+       
           if(ky.length>0){
           nplaceid = filterByPlaceName(nplaceid,ky);
           }
