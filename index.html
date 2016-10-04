@@ -229,13 +229,15 @@ function initMap(){
         keyword:keyword,
         openNow:true
       },function(r,s){
-        
+        var radarplace=[]
          if(s!==google.maps.places.PlacesServiceStatus.OK){// sheck status
             console.error(status);
             return;
           }
         console.log(r);
         
+        radarplace=filterByPlaceName(r,ky);
+        console.log(radarplace);
         
         
       });
