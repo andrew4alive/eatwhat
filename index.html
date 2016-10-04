@@ -217,16 +217,16 @@ function initMap(){
   //nearby search function
   function mapFS(){
    
-    
-     var rs =[];
+       nplaceid=[];
+     
     var ky = document.getElementById('keyw').value;
     ky = ky.trim();
-    ky= ky.split(" ");
+    //ky= ky.split(" ");
  
      var keyword =['eat'];
-    $.map(ky,function(n){
+   /* $.map(ky,function(n){
         keyword.push(n);
-    });
+    });*/
     console.log(keyword);
     service.nearbySearch(
       {//search param
@@ -258,7 +258,7 @@ function initMap(){
         pickagainbutton.disabled=false;
        
         for(var i=0;i<r.length;i++)
-                 rs.push(r[i]);
+                 nplaceid.push(r[i]);
            
           if(p.hasNextPage){//inde]x page
             
@@ -266,10 +266,10 @@ function initMap(){
                p.nextPage();
           }
         else{
-          nplaceid=[];
-          $.map(rs,function(n){
+       
+         /* $.map(rs,function(n){
            nplaceid.push( n);
-          });
+          });*/
           console.log(nplaceid);
           
          rex();
