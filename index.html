@@ -218,7 +218,8 @@ function initMap(){
   function mapFS(){
    
        nplaceid=[];
-     
+      var rmap=document.getElementById('rmapholder');
+     var pickagainbutton = document.getElementById('pickagain');
     var ky = document.getElementById('keyw').value;
     ky = ky.trim();
     
@@ -230,20 +231,37 @@ function initMap(){
         openNow:true,
         name:ky
       },function(r,s){
-       // var radarplace=[]
+        var radarplace=[]
          if(s!==google.maps.places.PlacesServiceStatus.OK){// sheck status
-            console.error(status);
+             console.error(status);
+            rmap.innerHTML='';
+            w10ele.innerHTML='';
+           document.getElementById('noplacefound').innerHTML='Try Zoom out , no place to eat nearby';
+            pickagainbutton.disabled=true;
             return;
           }
         console.log(r);
-        
-       // radarplace=filterByPlaceName(r,ky);
-       // console.log(radarplace);
-        
+          rmap.innerHTML='<h1>loading ....</h1>';
+        document.getElementById('noplacefound').innerHTML='';
+     
+        rex();
+         pickagainbutton.onclick=function(){
+         rex();
+            
+          };
+         function rex(){
+          
+           var rplace1 = rplace(r);
+           var llw=rplace1.geometry.location;
+           createrplace(rmap,rplace1.place_id);
+          if(window.navigator.userAgent.indexOf("Edge") > -1)
+             w10mapapp(w10ele,{lat:llw.lat,lng:llw.lng});
+          
+          }
         
       });
 
-    service.nearbySearch(
+  /*  service.nearbySearch(
       {//search param
         bounds:map.getBounds(),
         
@@ -253,8 +271,7 @@ function initMap(){
     
     
       },function(r,s,p){//start search
-         var rmap=document.getElementById('rmapholder');
-        var pickagainbutton = document.getElementById('pickagain');
+        
         
         var w10ele =document.getElementById('w10map');
           if(s!==google.maps.places.PlacesServiceStatus.OK){// sheck status
@@ -312,7 +329,7 @@ function initMap(){
         
           
         
-        }
+        }*/
         
         
     });//end search 
