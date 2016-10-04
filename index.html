@@ -198,26 +198,26 @@ function initMap(){
   
   logm.innerHTML="seraching map";
   //map search
-  var rplaceid=[];
+  
   
   var nplaceid=[];
-   var service = new google.maps.places.PlacesService(map);
+   
       var ky = document.getElementById('keyw').value;
  // var rmarker = new google.maps.Marker({map:map});
   //event
   //map.addListener('idle', mapFR);
   //map.addListener('idle', mapFS);
    
-  $('#myModal').on('show.bs.modal',mapFS);
+  $('#myModal').on('show.bs.modal',function(){mapFS(false)});
   document.getElementById('keywclr').onclick=function(){
     ky='';
   };
   //end event
   
   //nearby search function
-  function mapFS(){
-   
-       nplaceid=[];
+  function mapFS(sb){
+   var service = new google.maps.places.PlacesService(map);
+       var rplaceid=[];
       var rmap=document.getElementById('rmapholder');
      var pickagainbutton = document.getElementById('pickagain');
     var ky = document.getElementById('keyw').value;
@@ -225,6 +225,7 @@ function initMap(){
     
  
      var keyword =['eat'];
+    if(cb=false){
       service.radarSearch({
            bounds:map.getBounds(),
         keyword:keyword,
@@ -260,8 +261,11 @@ function initMap(){
           }
         
       });
-
-  /*  service.nearbySearch(
+    }
+    
+    else{
+   
+      service.nearbySearch(
       {//search param
         bounds:map.getBounds(),
         
@@ -333,7 +337,7 @@ function initMap(){
         
         
     });//end search 
-    */
+    }
   
   }
   // end nearby search function
