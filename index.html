@@ -270,6 +270,9 @@ function initMap(){
          /* $.map(rs,function(n){
            nplaceid.push( n);
           });*/
+          if(ky.length>0){
+          nplaceid = filterByPlaceName(nplaceid,ky);
+          }
           console.log(nplaceid);
           
          rex();
@@ -288,7 +291,21 @@ function initMap(){
              w10mapapp(w10ele,{lat:llw.lat,lng:llw.lng});
           
           }
-         
+          
+          function filterByPlaceName(place,name){
+              var pl=[];
+               var lname = name.toLowerCase();
+                $.map(place,function(n){
+                
+                    var ln = n.name.toLowerCase();
+                  
+                
+                     if(nn.indexOf(lname)>-1){
+                          pl.push(n)
+                     }
+                 });
+              return pl;
+          }
           
         
         }
