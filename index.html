@@ -208,7 +208,7 @@ function initMap(){
   //map.addListener('idle', mapFR);
   //map.addListener('idle', mapFS);
    
-  $('#myModal').on('show.bs.modal',function(){mapFS(false)});
+  $('#myModal').on('show.bs.modal',function(){mapFS(false);});
   document.getElementById('keywclr').onclick=function(){
     ky='';
   };
@@ -222,7 +222,7 @@ function initMap(){
      var pickagainbutton = document.getElementById('pickagain');
     var ky = document.getElementById('keyw').value;
     ky = ky.trim();
-    
+    console.log(sb)
  
      var keyword =['eat'];
     if(sb==false){
@@ -301,11 +301,11 @@ function initMap(){
           }
         else{
        
-       console.log(nplaceid);
+       //console.log(nplaceid);
           if(ky.length>0){
           nplaceid = filterByPlaceName(nplaceid,ky);
           }
-          console.log(nplaceid);
+          //console.log(nplaceid);
           
          rex();
          
