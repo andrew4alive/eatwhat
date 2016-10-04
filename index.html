@@ -217,6 +217,7 @@ function initMap(){
   //nearby search function
   function mapFS(sb){
    var service = new google.maps.places.PlacesService(map);
+     var w10ele =document.getElementById('w10map');
        var rplaceid=[];
       var rmap=document.getElementById('rmapholder');
      var pickagainbutton = document.getElementById('pickagain');
@@ -226,9 +227,9 @@ function initMap(){
  
      var keyword =['eat'];
     if(sb==false){
-      
+      var keyword ='eat';
      if(ky.length>0)
-        keyword.push(ky);
+        keyword=keyword+'|'+ky;
       service.radarSearch({
            bounds:map.getBounds(),
         keyword:keyword,
@@ -280,7 +281,7 @@ function initMap(){
       },function(r,s,p){//start search
         
         
-        var w10ele =document.getElementById('w10map');
+       
           if(s!==google.maps.places.PlacesServiceStatus.OK){// sheck status
             console.error(status);
             rmap.innerHTML='';
