@@ -294,16 +294,19 @@ function initMap(){
           
           function filterByPlaceName(place,name){
               var pl=[];
+            
                var lname = name.toLowerCase();
-                $.map(place,function(n){
                 
-                    var ln = n.name.toLowerCase();
+               for(var i=0;i<place.length;i++){ 
+                    var ln = place[i].name.toLowerCase();
                   
                 
                      if(ln.indexOf(lname)>-1){
                           pl.push(n)
                      }
-                 });
+                 
+                 
+                   }
               return pl;
           }
           
