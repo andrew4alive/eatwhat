@@ -213,6 +213,7 @@ function initMap(){
       var rmap=document.getElementById('rmapholder');
      var pickagainbutton = document.getElementById('pickagain');
     var ky = document.getElementById('keyw').value;
+    rmap.innerHTML='<h1>loading ....</h1>';
     ky = ky.trim();
    
  
@@ -226,7 +227,7 @@ function initMap(){
         keyword:keyword,
         openNow:true};
       gmap.radarS(option,function(r){
-       rmap.innerHTML='<h1>loading ....</h1>';
+       
         document.getElementById('noplacefound').innerHTML='';
      
         rex();
