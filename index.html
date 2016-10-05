@@ -199,7 +199,7 @@ function initMap(){
   var ky = document.getElementById('keyw').value;
 
    
-  $('#myModal').on('show.bs.modal',function(){mapFS(true);});
+  $('#myModal').on('show.bs.modal',function(){mapFS(false);});
   document.getElementById('keywclr').onclick=function(){
     ky='';
   };
@@ -228,23 +228,7 @@ function initMap(){
         keyword:keyword,
         openNow:true};
       gmap.radarS(option,function(r){
-       
-        
-     
-        rex();
-         pickagainbutton.onclick=function(){
-         rex();
-            
-          };
-         function rex(){
-          
-           var rplace1 = rplace(r);
-           var llw=rplace1.geometry.location;
-           createrplace(rmap,rplace1.place_id);
-          if(window.navigator.userAgent.indexOf("Edge") > -1)
-             w10mapapp(w10ele,{lat:llw.lat,lng:llw.lng});
-          
-          }
+          ssu(r);
       },
       function(status){
        serr(sta);
