@@ -152,22 +152,33 @@
  $("form").submit(function(event) { // You can change "form" to whatever ID/class your form has
     event.preventDefault();
 });
- 
-    var wgmap =function(apikey){
+ //gmap lib 
+    function wgmap (apikey){
       var self=this;
       
-      function mapele(ak){
+     
+      window.onload=function(){
+        document.body.appendChild(mapele(apikey));
+        self.cMap = function(ele,option){
+         var map = new google.maps.Map(ele, option);
+            return map;        };
+      
+      };
+      
+      
+      
+      function mapele(ak){// create gmap api
       var scriptEle = document.createElement('script');
       scriptEle.setAttribute('async','');
       scriptEle.setAttribute('defer','');
       scriptEle.setAttribute('src','https://maps.googleapis.com/maps/api/js?key='+ak+'&callback=initMap&libraries=places,visualization');
-      return scriptEle;
+      return scriptEle; }
       
-      }
-      window.onload=function(){
-      document.body.appendChild(mapele(apikey));
+      
+        
       };
-    }('AIzaSyCR-fcDARXL_RqH9AipjGChFIpLDL5lOR8');
+    };
+    var gmap=new wgmap('AIzaSyCR-fcDARXL_RqH9AipjGChFIpLDL5lOR8');
     
 function initMap(){
     
@@ -189,12 +200,18 @@ function initMap(){
     }
       
     
- 
+ /*
   var map = new google.maps.Map(document.getElementById('map'), {
           center: mapcenter(),
           zoom:14 ,
           scrollwheel:false
-  })
+  })*/
+  
+  var map=gmap.cMap(document.getElementById('map'), {
+          center: mapcenter(),
+          zoom:14 ,
+          scrollwheel:false
+           });
   map.setOptions({draggable: false});
   
   
@@ -488,12 +505,7 @@ function initMap(){
 }    
   </script>
   
-  <!--
-  <script async defer 
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCR-fcDARXL_RqH9AipjGChFIpLDL5lOR8&callback=initMap&libraries=places,visualization">
-  
-</script>
--->
+
 
 
 
