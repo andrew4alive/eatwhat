@@ -155,7 +155,7 @@
  //gmap lib 
     function wgmap (apikey){
       var self=this;
-      self.umoption={};
+      self.umoption=null;
      
       window.onload=function(){
         
@@ -164,18 +164,18 @@
        
         self.map = function(ele,option){//create google map
             var map = new google.maps.Map(ele, option);
-            self.umark=function(){ return umarkf(); };//create your mark
+            
           
           
             return map;       };
         
-      
+        self.umark=function(){ return umarkf(); };//create your mark
       };
       
       function umarkf(){
         
        var my ;
-       if(self.umoption == {}){
+       if(self.umoption !== null){
              my = new google.maps.Marker(self.umoption);
         }else{
             my = new google.maps.Marker({
