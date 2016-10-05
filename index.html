@@ -256,82 +256,21 @@ function initMap(){
     
     else{
    
-    /*  service.nearbySearch(
-      {//search param
-        bounds:map.getBounds(),
-        
-
-        keyword:keyword,
-        openNow:true
-    
-    
-      },function(r,s,p){//start search
-        
-        
-       
-          if(s!==google.maps.places.PlacesServiceStatus.OK){// sheck status
-            console.error(status);
-            rmap.innerHTML='';
-            w10ele.innerHTML='';
-           document.getElementById('noplacefound').innerHTML='Try Zoom out , no place to eat nearby';
-            pickagainbutton.disabled=true;
-            return;
-          }
-            // status ok 
-       
-        pickagainbutton.disabled=false;
-       
-        for(var i=0;i<r.length;i++)
-                 nplaceid.push(r[i]);
-           
-          if(p.hasNextPage){//inde]x page
-            
-              
-               p.nextPage();
-          }
-        else{
-       
-       //console.log(nplaceid);
-          if(ky.length>0){
-          nplaceid = filterByPlaceName(nplaceid,ky);
-          }
-          //console.log(nplaceid);
-          
-         rex();
-         
-          pickagainbutton.onclick=function(){
-         rex();
-            
-          };
-          
-         
-          function rex(){
-            if(nplaceid.length<=0){
-            console.log('no place found found');
-              rmap.innerHTML='';
-              document.getElementById('noplacefound').innerHTML='try other search filter';
-              return ;
-            }
-           var rplace1 = rplace(nplaceid);
-           var llw=rplace1.geometry.location;
-           createrplace(rmap,rplace1.place_id);
-          if(window.navigator.userAgent.indexOf("Edge") > -1)
-             w10mapapp(w10ele,{lat:llw.lat,lng:llw.lng});
-          
-          }
-          
-        
-          
-        
-        }
-        
-        
-    });//end search */
       var option= {bounds:map.getBounds(),
                     keyword:keyword,
                     openNow:true};
       gmap.nearbySAll(option,function(r){
-           rex();
+         
+        ssu(r);
+      },
+      function(status){
+             serr(status);
+      
+      }); 
+    }
+    
+    function ssu(r){
+      rex();
          pickagainbutton.onclick=function(){
          rex();
             
@@ -345,14 +284,9 @@ function initMap(){
              w10mapapp(w10ele,{lat:llw.lat,lng:llw.lng});
           
           }
-      
-      },
-      function(status){
-             serr(status);
-      
-      }); 
+    
+    
     }
-  
     
     function serr(s1){
             console.error(s1);
