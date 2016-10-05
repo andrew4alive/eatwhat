@@ -165,7 +165,7 @@
         self.map = function(ele,option,ub){//create google map
             var map = new google.maps.Map(ele, option);
             var my ;
-          if(ub=true){
+          if(ub!==true){
             if(self.umoption !== null){
              my = new google.maps.Marker(self.umoption);
              }else{
