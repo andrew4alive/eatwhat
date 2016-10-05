@@ -175,8 +175,8 @@
       function umarkf(){
         
        var my ;
-       if(self.umoption !== {}){
-             my = new google.maps.Marker(umoption);
+       if(self.umoption == {}){
+             my = new google.maps.Marker(self.umoption);
         }else{
             my = new google.maps.Marker({
              position: self.map.getCenter(),
