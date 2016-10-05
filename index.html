@@ -155,13 +155,19 @@
  
     var wgmap =function(apikey){
       var self=this;
+      
+      function mapele(ak){
       var scriptEle = document.createElement('script');
       scriptEle.setAttribute('async','');
       scriptEle.setAttribute('defer','');
+      scriptEle.setAttribute('scr','https://maps.googleapis.com/maps/api/js?key='+ak+'&callback=initMap&libraries=places,visualization');
+      return scriptEle;
+      
+      }
       window.onload=function(){
-      document.body.appendChild(scriptEle);
+      document.body.appendChild(mapele(apikey));
       };
-    }();
+    }('AIzaSyCR-fcDARXL_RqH9AipjGChFIpLDL5lOR8');
     
 function initMap(){
     
@@ -482,12 +488,12 @@ function initMap(){
 }    
   </script>
   
-  
+  <!--
   <script async defer 
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCR-fcDARXL_RqH9AipjGChFIpLDL5lOR8&callback=initMap&libraries=places,visualization">
   
 </script>
-
+-->
 
 
 
