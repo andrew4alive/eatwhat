@@ -331,11 +331,24 @@ function initMap(){
                     keyword:keyword,
                     openNow:true};
       gmap.nearbySAll(option,function(r){
-      
+           rex();
+         pickagainbutton.onclick=function(){
+         rex();
+            
+          };
+         function rex(){
+          
+           var rplace1 = rplace(r);
+           var llw=rplace1.geometry.location;
+           createrplace(rmap,rplace1.place_id);
+          if(window.navigator.userAgent.indexOf("Edge") > -1)
+             w10mapapp(w10ele,{lat:llw.lat,lng:llw.lng});
+          
+          }
       
       },
       function(status){
-             
+             serr(status);
       
       }); 
     }
