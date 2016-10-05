@@ -207,7 +207,7 @@ function initMap(){
   
   //nearby search function
   function mapFS(sb){
-   var service = new google.maps.places.PlacesService(map);
+   //var service = new google.maps.places.PlacesService(map);
      var w10ele =document.getElementById('w10map');
        var rplaceid=[];
       var rmap=document.getElementById('rmapholder');
@@ -221,7 +221,7 @@ function initMap(){
       var keyword ='eat';
      if(ky.length>0)
         keyword=keyword+'|'+ky;
-      service.radarSearch({
+   /*  service.radarSearch({
            bounds:map.getBounds(),
         keyword:keyword,
         openNow:true
@@ -255,7 +255,7 @@ function initMap(){
           
           }
         
-      });
+      });*/
       /*
       var option={bounds:map.getBounds(),
         keyword:keyword,
