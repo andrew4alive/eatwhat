@@ -165,8 +165,20 @@
         self.map = function(ele,option,ub){//create google map
             var map = new google.maps.Map(ele, option);
             var my ;
-          if(ub!==true){
-            if(self.umoption !== null){
+          if(ub==true){
+           var my = umark(map);
+          }
+             self.umark = my;
+            return map;       
+        };
+        
+      //  self.umark=function(){ return umarkf(); };//create your mark
+      };
+      
+      function umarkf(map){
+        
+        var my;
+      if(self.umoption !== null){
              my = new google.maps.Marker(self.umoption);
              }else{
              my = new google.maps.Marker({
@@ -178,33 +190,7 @@
                draggable: false,
                map: map});
             }
-          }
-             self.umark = my;
-            return map;       
-        };
-        
-      //  self.umark=function(){ return umarkf(); };//create your mark
-      };
-      
-      function umarkf(){
-        var map = self.map;
-        console.log(self);
-       
-       if(self.umoption !== null){
-             my = new google.maps.Marker(self.umoption);
-        }else{
-            my = new google.maps.Marker({
-             position: map.getCenter(),
-             icon: {
-                path: google.maps.SymbolPath.CIRCLE,
-                scale: 5,
-                strokeColor: 'blue'},
-             draggable: false,
-             map: map});
-          }
-        
-        return my;
-      
+          return my;
       }
       
       function mapele(ak){// create gmap api
