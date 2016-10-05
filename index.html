@@ -175,12 +175,7 @@ function initMap(){
     }
       
     
- /*
-  var map = new google.maps.Map(document.getElementById('map'), {
-          center: mapcenter(),
-          zoom:14 ,
-          scrollwheel:false
-  })*/
+
   
   var map=gmap.map(document.getElementById('map'), {
           center: mapcenter(),
@@ -188,20 +183,8 @@ function initMap(){
           scrollwheel:false
                 },
            true);
-  map.setOptions({draggable: false});
   
-  /*
-   var markeryou = new google.maps.Marker({
-    position: map.getCenter(),
-    icon: {
-      path: google.maps.SymbolPath.CIRCLE,
-      scale: 5,
-      strokeColor: 'blue',
-    
-    },
-    draggable: false,
-    map: map
-  });*/
+  map.setOptions({draggable: false});
   
   var markeryou = gmap.umark;
   
@@ -213,11 +196,8 @@ function initMap(){
   
   var nplaceid=[];
    
-      var ky = document.getElementById('keyw').value;
- // var rmarker = new google.maps.Marker({map:map});
-  //event
-  //map.addListener('idle', mapFR);
-  //map.addListener('idle', mapFS);
+  var ky = document.getElementById('keyw').value;
+
    
   $('#myModal').on('show.bs.modal',function(){mapFS(false);});
   document.getElementById('keywclr').onclick=function(){
