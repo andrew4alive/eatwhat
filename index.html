@@ -259,7 +259,7 @@ function initMap(){
       var option={bounds:map.getBounds(),
         keyword:keyword,
         openNow:true};
-      gmap.radarS(option,function(){
+      gmap.radarS(option,function(r){
        rmap.innerHTML='<h1>loading ....</h1>';
         document.getElementById('noplacefound').innerHTML='';
      
