@@ -213,7 +213,8 @@ function initMap(){
       var rmap=document.getElementById('rmapholder');
      var pickagainbutton = document.getElementById('pickagain');
     var ky = document.getElementById('keyw').value;
-    rmap.innerHTML='<h1>loading ....</h1>';
+     rmap.innerHTML='<h1>loading ....</h1>';
+     document.getElementById('noplacefound').innerHTML='';
     ky = ky.trim();
    
  
@@ -228,7 +229,7 @@ function initMap(){
         openNow:true};
       gmap.radarS(option,function(r){
        
-        document.getElementById('noplacefound').innerHTML='';
+        
      
         rex();
          pickagainbutton.onclick=function(){
@@ -282,8 +283,7 @@ function initMap(){
             return;
           }
             // status ok 
-        rmap.innerHTML='<h1>loading ....</h1>';
-        document.getElementById('noplacefound').innerHTML='';
+       
         pickagainbutton.disabled=false;
        
         for(var i=0;i<r.length;i++)
