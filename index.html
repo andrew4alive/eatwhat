@@ -221,41 +221,6 @@ function initMap(){
       var keyword ='eat';
      if(ky.length>0)
         keyword=keyword+'|'+ky;
-   /*  service.radarSearch({
-           bounds:map.getBounds(),
-        keyword:keyword,
-        openNow:true
-        //,name:ky
-      },function(r,s){
-        var radarplace=[]
-         if(s!==google.maps.places.PlacesServiceStatus.OK){// sheck status
-             console.error(status);
-            rmap.innerHTML='';
-            w10ele.innerHTML='';
-           document.getElementById('noplacefound').innerHTML='Try Zoom out , no place to eat nearby';
-            pickagainbutton.disabled=true;
-            return;
-         }
-     
-          rmap.innerHTML='<h1>loading ....</h1>';
-        document.getElementById('noplacefound').innerHTML='';
-     
-        rex();
-         pickagainbutton.onclick=function(){
-         rex();
-            
-          };
-         function rex(){
-          
-           var rplace1 = rplace(r);
-           var llw=rplace1.geometry.location;
-           createrplace(rmap,rplace1.place_id);
-          if(window.navigator.userAgent.indexOf("Edge") > -1)
-             w10mapapp(w10ele,{lat:llw.lat,lng:llw.lng});
-          
-          }
-        
-      });*/
       
       var option={bounds:map.getBounds(),
         keyword:keyword,
