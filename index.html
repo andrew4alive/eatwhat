@@ -155,20 +155,42 @@
  //gmap lib 
     function wgmap (apikey){
       var self=this;
-      
+      self.umoption={};
      
       window.onload=function(){
         
         
         document.body.appendChild(mapele(apikey));
        
-        self.map = function(ele,option,umb){
+        self.map = function(ele,option){//create google map
             var map = new google.maps.Map(ele, option);
-            return map;        };
+            self.umark=function(){ return umarkf(); };//create your mark
+          
+          
+            return map;       };
+        
       
       };
       
+      function umarkf(){
+        
+       var my ;
+       if(umoption !== {}){
+             my = new google.maps.Marker(umoption);
+        }else{
+            my = new google.maps.Marker({
+             position: self.map.getCenter(),
+             icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 5,
+                strokeColor: 'blue'},
+             draggable: false,
+             map: self.map});
+          }
+        
+        return my;
       
+      }
       
       function mapele(ak){// create gmap api
       var scriptEle = document.createElement('script');
@@ -217,7 +239,7 @@ function initMap(){
            });
   map.setOptions({draggable: false});
   
-  
+  /*
    var markeryou = new google.maps.Marker({
     position: map.getCenter(),
     icon: {
@@ -228,7 +250,9 @@ function initMap(){
     },
     draggable: false,
     map: map
-  });
+  });*/
+  
+  var markeryou = gmap.umark();
   
   updatemap();
   
