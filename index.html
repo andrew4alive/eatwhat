@@ -158,9 +158,12 @@
       
      
       window.onload=function(){
+        
+        
         document.body.appendChild(mapele(apikey));
-        self.cMap = function(ele,option){
-         var map = new google.maps.Map(ele, option);
+       
+        self.map = function(ele,option,umb){
+            var map = new google.maps.Map(ele, option);
             return map;        };
       
       };
@@ -207,7 +210,7 @@ function initMap(){
           scrollwheel:false
   })*/
   
-  var map=gmap.cMap(document.getElementById('map'), {
+  var map=gmap.map(document.getElementById('map'), {
           center: mapcenter(),
           zoom:14 ,
           scrollwheel:false
