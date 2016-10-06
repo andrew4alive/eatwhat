@@ -366,8 +366,9 @@ function initMap(){
   function updatemap(){
     
    markeryou.setPosition(markeryoucenter());
-    map.setCenter(mapcenter()); 
-   setTimeout(updatemap,300); 
+    //map.setCenter(mapcenter()); 
+   map.panTo(mapcenter());
+    setTimeout(updatemap,100); 
     
   };
  
