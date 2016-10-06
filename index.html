@@ -224,7 +224,7 @@ function initMap(){
     if(sb==false){
       var keyword ='eat|Restaurant';
      if(ky.length>0)
-        keyword=keyword+'|'+ky;
+        keyword=keyword+'&'+ky;
       
       var option={bounds:map.getBounds(),
         keyword:keyword,
