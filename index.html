@@ -223,8 +223,8 @@ function initMap(){
     var keyword =['eat'];
     if(sb==false){
       var keyword ='eat|Restaurant';
-    // if(ky.length>0)
-      //  keyword=keyword+'|'+ky;
+     if(ky.length>0)
+        keyword=ky;
       
       var option={bounds:map.getBounds(),
         keyword:keyword,
@@ -262,8 +262,6 @@ function initMap(){
             
           };
          function rex(){
-           if(ky.length>0)
-              r = filterByPlaceName(r,ky);
            var rplace1 = rplace(r);
            var llw=rplace1.geometry.location;
            createrplace(rmap,rplace1.place_id);
