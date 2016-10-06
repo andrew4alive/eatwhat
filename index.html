@@ -222,12 +222,12 @@ function initMap(){
  
     var keyword =['eat'];
     if(sb==false){
-      var keyword ='eat|Restaurant';
+      //var keyword ='eat|Restaurant';
      if(ky.length>0)
         keyword=ky;
       
       var option={bounds:map.getBounds(),
-        keyword:keyword,
+        keyword:keyword,type:'cafe|restaurant|meal_takeaway|meal_delivery'
         openNow:true};
       gmap.radarS(option,function(r){
           ssu(r);
