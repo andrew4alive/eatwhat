@@ -288,7 +288,8 @@ function initMap(){
   // element function
   
        function createrplace(ele,rid){//create emebed map to element
-           var iframe='<iframe  frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBWu5ezWN1HrruH3LXGI1L9JjcmQmX-Mks&q=';
+           var iframe='<iframe  frameborder="0" style="border:0;'+'height:'+getDocumentHeight()*0.8 +';"';
+              iframe=iframe+' src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBWu5ezWN1HrruH3LXGI1L9JjcmQmX-Mks&q=';
           
          iframe = iframe +'place_id:'+rid+'"allowfullscreen></iframe>';
            ele.innerHTML=iframe;
