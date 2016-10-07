@@ -223,21 +223,14 @@ function initMap(){
     var keyword =['eat'];
     if(sb==false){
       var keyword ;//='eat|Restaurant';
+         var option={bounds:map.getBounds(),
+         type:'restaurant',
+        openNow:true};
+      
      if(ky.length>0){
         keyword=ky;
-      
-      var option={bounds:map.getBounds(),
-        keyword:keyword,type:'restaurant',
-        openNow:true};
+       option.keyword=keyword;
        
-       
-     }else{
-       var option={bounds:map.getBounds(),
-         type:restaurant,
-        openNow:true};
-             
-     
-     
      }
       gmap.radarS(option,function(r){
           ssu(r);
