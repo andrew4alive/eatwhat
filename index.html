@@ -288,7 +288,8 @@ function initMap(){
   // element function
   
        function createrplace(ele,rid){//create emebed map to element
-           var iframe='<iframe  frameborder="0" style="border:0;'+'height:'+getDocumentHeight()*0.5 +'px;"';
+         var ys = getDocumentSize();
+           var iframe='<iframe  frameborder="0" style="border:0;'+'height:'+ys.x*0.5 +'px;"';
               iframe=iframe+' src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBWu5ezWN1HrruH3LXGI1L9JjcmQmX-Mks&q=';
           
          iframe = iframe +'place_id:'+rid+'"allowfullscreen></iframe>';
@@ -412,9 +413,9 @@ function initMap(){
       
 } 
     
-    console.log(getDocumentHeight());
-function getDocumentHeight(){
- return $(document).height();
+
+function getDocumentSize(){
+ return {y:$(document).height(),x:$(document).width()};
 }
   </script>
   
