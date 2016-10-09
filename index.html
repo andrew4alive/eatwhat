@@ -81,7 +81,7 @@
       <label class="sr-only" for="keyw">Search Critirial</label>
       <div class="input-group">
         <input type="text" class="form-control" id="keyw" placeholder="Search for anything or everthing" >
-        <div class="input-group-addon" id="keywclr">search</div>
+        <div class="input-group-addon" id="keywclr">Clear</div>
      </div>
       </div>
 </form>    
@@ -206,7 +206,7 @@ function initMap(){
   $('#myModal').on('show.bs.modal',function(){mapFS(false);});
   document.getElementById('keywclr').onclick=function(){
     console.log('click');
-    ky='';
+   document.getElementById('keyw').value='';
   };
   //end event
   
