@@ -260,7 +260,7 @@ function initMap(){
       
       console.log(r);
       gmap.service.getDetails({placeId:r[0].place_id},function(p,s){
-       if (status == google.maps.places.PlacesServiceStatus.OK) {
+       if (s == google.maps.places.PlacesServiceStatus.OK) {
           console.log(p);
         }
         
