@@ -227,11 +227,11 @@ function initMap(){
          type:'restaurant',
         openNow:true};
       
-   //  if(ky.length>0){
+     if(ky.length>0){
         keyword=ky;
        option.keyword=keyword;
        
-   // }
+   }
       gmap.radarS(option,function(r){
           ssu(r);
       },
