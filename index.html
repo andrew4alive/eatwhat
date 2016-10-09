@@ -257,43 +257,37 @@ function initMap(){
     }
     
     function ssu(rs){
-      var r=[]
+      
       console.log(rs);
         
-      pid2place();
+     // pid2place();
       
-      function pid2place(){
+      /*function pid2place(){
          var rsdt = rs.pop();
       gmap.service.getDetails({placeId:rsdt.place_id},function(p,s){
        if (s == google.maps.places.PlacesServiceStatus.OK) {
-          r.push(p);} else {
-          console.log(s);
+        
           }
-         if(rs.length>0)
-           pid2place();
-        else
-          rex1(r);
         
         });
-      }
+      }*/
       
       
-     function  rex1(r){
-       console.log(r,rs);
+
       rex();
          pickagainbutton.onclick=function(){
          rex();
             
           };
          function rex(){
-           var rplace1 = rplace(r);
+           var rplace1 = rplace(rs);
            var llw=rplace1.geometry.location;
            createrplace(rmap,rplace1.place_id);
           if(window.navigator.userAgent.indexOf("Edge") > -1)
              w10mapapp(w10ele,{lat:llw.lat,lng:llw.lng});
           
           }
-      }
+      
     
     
     }
