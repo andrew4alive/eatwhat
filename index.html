@@ -224,9 +224,11 @@ function initMap(){
  
     var keyword =['eat'];
     if(sb==false){
-      var keyword = '|'+ky.value ;//='eat|Restaurant';
+      var keyword = 'eat|restaurant|food|drink';
+      if(ky.value.length>0)
+        keyword = ky.value;
          var option={bounds:map.getBounds(),
-       keyword:'eat|restaurant|food|drink'+keyword, type:'restaurant',
+       keyword:keyword, type:'restaurant',
         openNow:true};
       
     
