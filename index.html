@@ -272,11 +272,19 @@ function initMap(){
             if(rs.length>0){
                 
            var rplace1 = rplace(rs);
-             console.log(rs.indexOf(rplace1));
+              
+              var rpc= rs.indexOf(rplace1);
+             console.log(rpc);
+              rs.splice(rpc,1);
            var llw=rplace1.geometry.location;
            createrplace(rmap,rplace1.place_id);
           if(window.navigator.userAgent.indexOf("Edge") > -1)
              w10mapapp(w10ele,{lat:llw.lat,lng:llw.lng});
+            }else{
+            rmap.innerHTML='';
+            w10ele.innerHTML='';
+           document.getElementById('noplacefound').innerHTML='no more place in this area to pick';
+            pickagainbutton.disabled=true;
             }
           }
       
