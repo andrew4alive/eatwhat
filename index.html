@@ -259,16 +259,22 @@ function initMap(){
     function ssu(rs){
       var r=[]
       console.log(rs);
+        
+      pid2place();
       
-      for(var i=0;i<rs.length;i++){
-      gmap.service.getDetails({placeId:r[i].place_id},function(p,s){
+      function pid2place(){
+         var rsdt = rs.pop();
+      gmap.service.getDetails({placeId:rsdt.place_id},function(p,s){
        if (s == google.maps.places.PlacesServiceStatus.OK) 
           r.push(p);
-         
+         if(rs.length>0)
+           pid2place();
         
         
         });
       }
+      
+      console.log(r);
       
       rex();
          pickagainbutton.onclick=function(){
