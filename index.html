@@ -76,7 +76,7 @@
 
 <div class="container page" id="mapp">
  
-  <form class="form-horizontal" >
+  <form class="form-horizontal" id="mapsrc">
     <div class="form-group">
       <label class="sr-only" for="keyw">Search Critirial</label>
       <div class="input-group">
@@ -200,13 +200,17 @@ function initMap(){
   
   var nplaceid=[];
    
-  var ky = document.getElementById('keyw').value;
+
 
    
   $('#myModal').on('show.bs.modal',function(){mapFS(false);});
   document.getElementById('keywclr').onclick=function(){
-    console.log('click');
+
    document.getElementById('keyw').value='';
+  };
+    document.getElementById('mapsrc').onsubmit=function(){
+
+   mapFS(false);
   };
   //end event
   
