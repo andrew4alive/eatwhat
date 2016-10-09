@@ -256,15 +256,19 @@ function initMap(){
       }); 
     }
     
-    function ssu(r){
+    function ssu(rs){
+      var r=[]
+      console.log(rs);
       
-      console.log(r);
-      gmap.service.getDetails({placeId:r[0].place_id},function(p,s){
-       if (s == google.maps.places.PlacesServiceStatus.OK) {
-          console.log(p);
-        }
+      for(var i=0;i<rs.length;i++){
+      gmap.service.getDetails({placeId:r[i].place_id},function(p,s){
+       if (s == google.maps.places.PlacesServiceStatus.OK) 
+          r.push(p);
+         
         
-      });
+        
+        });
+      }
       
       rex();
          pickagainbutton.onclick=function(){
