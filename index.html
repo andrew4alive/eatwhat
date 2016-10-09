@@ -225,11 +225,17 @@ function initMap(){
    
     if(sb==false){
       var keyword = 'eat|restaurant|food|drink';
-      if(ky.length>0)
+      if(ky.length>0){
         keyword = ky;
          var option={bounds:map.getBounds(),
        keyword:keyword, type:'restaurant',
+        openNow:true};}
+      else{
+        var option={bounds:map.getBounds(),
+       keyword:keyword, //type:'restaurant',
         openNow:true};
+      
+      }
       
     
       gmap.radarS(option,function(r){
