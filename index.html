@@ -260,18 +260,7 @@ function initMap(){
       
       console.log(rs);
         
-     // pid2place();
-      
-      /*function pid2place(){
-         var rsdt = rs.pop();
-      gmap.service.getDetails({placeId:rsdt.place_id},function(p,s){
-       if (s == google.maps.places.PlacesServiceStatus.OK) {
-        
-          }
-        
-        });
-      }*/
-      
+       var placepass=[];
       
 
       rex();
@@ -280,12 +269,15 @@ function initMap(){
             
           };
          function rex(){
+            if(rs.length>0){
+                
            var rplace1 = rplace(rs);
+             console.log(rs.indexOf(rplace1));
            var llw=rplace1.geometry.location;
            createrplace(rmap,rplace1.place_id);
           if(window.navigator.userAgent.indexOf("Edge") > -1)
              w10mapapp(w10ele,{lat:llw.lat,lng:llw.lng});
-          
+            }
           }
       
     
