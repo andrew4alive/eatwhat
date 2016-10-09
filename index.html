@@ -222,11 +222,11 @@ function initMap(){
     ky = ky.trim();
     pickagainbutton.disabled=false;
  
-    var keyword =['eat'];
+   
     if(sb==false){
       var keyword = 'eat|restaurant|food|drink';
-      if(ky.value.length>0)
-        keyword = ky.value;
+      if(ky.length>0)
+        keyword = ky;
          var option={bounds:map.getBounds(),
        keyword:keyword, type:'restaurant',
         openNow:true};
