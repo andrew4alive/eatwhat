@@ -76,20 +76,17 @@
 
 <div class="container page" id="mapp">
  
-  <form class="form-horizontal" id="mapsrc">
- 
-</form>    
+  <form class="form-horizontal" id="mapsrc"></form>    
     
-    <div   style="width:100%;height:70%;" id="map">
+  <div   style="width:100%;height:70%;" id="map">
    
      
             <h1 class="animated infinite bounce" style="text-align:center;margin:auto;margin-top:10%;">Trying to locate you</h1>
    
   
       </div>
-      <form id="pickmeform">
-     </form>
-    </div>
+    <form id="pickmeform"></form>
+ </div>
    
    
  
@@ -249,7 +246,7 @@ function initMap(){
       if(ky.length>0){
         
          var option={bounds:map.getBounds(),
-       keyword:ky, //type:'restaurant',
+       keyword:ky, type:'restaurant',
         openNow:true};}
       else{
         var option={bounds:map.getBounds(),
