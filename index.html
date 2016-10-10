@@ -77,13 +77,13 @@
 <div class="container page" id="mapp">
  
   <form class="form-horizontal" id="mapsrc">
-    <div class="form-group">
+  <!-- <div class="form-group">
       <label class="sr-only" for="keyw">Search Critirial</label>
       <div class="input-group">
         <input type="text" class="form-control" id="keyw" placeholder="Search for anything or everthing" >
         <div class="input-group-addon" id="keywclr">Clear</div>
      </div>
-      </div>
+      </div>-->
 </form>    
     
     <div   style="width:100%;height:70%;" id="map">
@@ -176,6 +176,9 @@ function initMap(){
       
     }
       
+  
+  
+  
     
 
   
@@ -193,6 +196,21 @@ function initMap(){
   var markeryou = gmap.umark;
   
   updatemap();
+  
+  //create input adn botton
+  
+  
+  document.getElementById('mapsrc').innerHTML='
+  <div class="form-group">
+      <label class="sr-only" for="keyw">Search Critirial</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="keyw" placeholder="Search for anything or everthing" >
+        <div class="input-group-addon" id="keywclr">Clear</div>
+     </div>
+      </div>
+  
+  
+  ';
   
   logm.innerHTML="seraching map";
   //map search
