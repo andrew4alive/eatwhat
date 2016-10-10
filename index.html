@@ -93,9 +93,9 @@
    
   
       </div>
-      <form>
-        <button type="button"   data-toggle="modal" data-target="#myModal" class="col-xs-12 btn btn-primary btn-lg " style="margin-top:10px;margin-bottom:10px;" id="findrplace">Press Me</button>
-  </form>
+      <form id="pickmeform">
+      <!--  <button type="button"   data-toggle="modal" data-target="#myModal" class="col-xs-12 btn btn-primary btn-lg " style="margin-top:10px;margin-bottom:10px;" id="findrplace">Press Me</button>
+  --></form>
     </div>
    
    
@@ -124,7 +124,12 @@
     </div>
   </div>
 </div>
-  
+  <!--tamplate-->
+    
+    <script type="text/stemplate" id="pickmebutton">
+    <button type="button"   data-toggle="modal" data-target="#myModal" class="col-xs-12 btn btn-primary btn-lg " style="margin-top:10px;margin-bottom:10px;" id="findrplace">Press Me</button>
+    
+    </script>
   
   
   <!--javascript-->
@@ -201,7 +206,7 @@ function initMap(){
   
   
   document.getElementById('mapsrc').innerHTML='<div class="form-group"><label class="sr-only" for="keyw">Search Critirial</label><div class="input-group"><input type="text" class="form-control" id="keyw" placeholder="Search for anything or everthing" ><div class="input-group-addon" id="keywclr">Clear</div></div></div> ';
-  
+  wTemplate('pickmeform','pickmebutton');
   logm.innerHTML="seraching map";
   //map search
   
@@ -457,6 +462,11 @@ function initMap(){
 function getDocumentSize(){
  return {y:$(document).height(),x:$(document).width()};
 }
+    
+    
+ function wTemplate(id,lid){
+ document.getElementById(id).innerHTML = document.getElementById(lid).innerHTML;
+ }
   </script>
   
 
