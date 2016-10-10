@@ -125,8 +125,17 @@
   </div>
 </div>
   <!--tamplate-->
+    <script type="text/wtem" id="mapsrc-tem">
+      <<div class="form-group">
+      <label class="sr-only" for="keyw">Search Critirial</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="keyw" placeholder="Search for anything or everthing" >
+        <div class="input-group-addon" id="keywclr">Clear</div>
+     </div>
+      </div>
     
-    <script type="text/stemplate" id="pickmebutton">
+    </script>
+    <script type="text/wtem" id="pickmebutton-tem">
     <button type="button"   data-toggle="modal" data-target="#myModal" class="col-xs-12 btn btn-primary btn-lg " style="margin-top:10px;margin-bottom:10px;" id="findrplace">Press Me</button>
     
     </script>
@@ -205,8 +214,10 @@ function initMap(){
   //create input adn botton
   
   
-  document.getElementById('mapsrc').innerHTML='<div class="form-group"><label class="sr-only" for="keyw">Search Critirial</label><div class="input-group"><input type="text" class="form-control" id="keyw" placeholder="Search for anything or everthing" ><div class="input-group-addon" id="keywclr">Clear</div></div></div> ';
-  wTemplate('pickmeform','pickmebutton');
+  //document.getElementById('mapsrc').innerHTML='<div class="form-group"><label class="sr-only" for="keyw">Search Critirial</label><div class="input-group"><input type="text" class="form-control" id="keyw" placeholder="Search for anything or everthing" ><div class="input-group-addon" id="keywclr">Clear</div></div></div> ';
+  
+  wTemplate('mapsrc','mapsrc-tem');
+  wTemplate('pickmeform','pickmebutton-tem');
   logm.innerHTML="seraching map";
   //map search
   
