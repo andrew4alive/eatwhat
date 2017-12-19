@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Latest compiled and minified CSS -->
-  
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -14,10 +14,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-  
+
   <style>
-  
-  
+
+
   html, body {
         height: 100%;
         width:100%;
@@ -30,26 +30,26 @@
          margin: 0px;
         padding: 0px;
       overflow:hidden;
-    
+
     }
     .page{
     height: 75%;
-    
+
     }
-   
-     
+
+
         #rmapholder > iframe {
-       
+
         width:100%;
          margin:0px;
          padding:0px;
 
       }
-  
-  
+
+
 
       #log{
-          
+
          display:none;
       }
 </style>
@@ -66,30 +66,30 @@
     </div>
   </div>
 </nav>
-  
- 
+
+
     <div  class="container-fluid" id="log">
-        
+
         log message :  <span id="logm"></span>
-        
+
     </div>
 
 <div class="container page" id="mapp">
- 
-  <form class="form-horizontal" id="mapsrc"></form>    
-    
+
+  <form class="form-horizontal" id="mapsrc"></form>
+
   <div   style="width:100%;height:70%;" id="map">
-   
-     
+
+
             <h1 class="animated infinite bounce" style="text-align:center;margin:auto;margin-top:10%;">Trying to locate you</h1>
-   
-  
+
+
       </div>
     <form id="pickmeform"></form>
  </div>
-   
-   
- 
+
+
+
   <!-- Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -99,9 +99,9 @@
         <h4 class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> Let Go Here!!</h4>
       </div>
       <div class="modal-body" >
-        
+
         <form id="noplacefound"> </form>
-        
+
           <div id="rmapholder" ></div>
           <!-- for window 10 button using map app-->
         <div class="container" id ="w10map"></div>
@@ -123,14 +123,14 @@
         <div class="input-group-addon" id="keywclr">Clear</div>
      </div>
       </div>
-    
+
     </script>
     <script type="text/wtem" id="pickmebutton-tem">
     <button type="button"   data-toggle="modal" data-target="#myModal" class="col-xs-12 btn btn-primary btn-lg " style="margin-top:10px;margin-bottom:10px;" id="findrplace">Press Me</button>
-    
+
     </script>
-  
-  
+
+
   <!--javascript-->
 
 
@@ -142,15 +142,107 @@
 
 
   <script src="https://gitcdn.xyz/repo/andrew4alive/html5-geo/master/geo.js"></script>
-  
+
   <!--<script src="https://gitcdn.xyz/cdn/andrew4alive/wgmap/ac9e705d178227c8a85752cc6846bad727a0c7c4/wgmap.js"></script>
   -->
-    
+  <!--
     <script src="https://rawgit.com/andrew4alive/wgmap/master/wgmap.js"></script>
-  <script>
-    
+-->
+<script>
+//gmap lib 
+    function wgmap (apikey){
+      var self=this;
+      var wmap;
+      var service;
+      self.service=null;
+      self.umoption=null;
+      self.umark=null;
+      window.onload=function(){
+
+
+        document.body.appendChild(mapele(apikey));
+
+        self.map = function(ele,option,ub){//create google map
+             wmap = new google.maps.Map(ele, option);
+            var my ;
+          if(ub==true){
+           var my = umarkf();
+          }
+
+            service = new google.maps.places.PlacesService(wmap);
+            self.service = service;
+             self.umark = my;
+            return wmap;
+        };
+        self.radarS =function(option,su,er ){
+
+            service.radarSearch(option,function(r,s){
+                 if(s!==google.maps.places.PlacesServiceStatus.OK){// sheck status
+                     er(s);
+                     return;
+                     }
+
+                      su(r);
+            });
+        };
+
+        self.nearbySAll=function(option,su,er){
+            var splace=[];
+            service.nearbySearch(option,function(r,s,p){
+              if(s!==google.maps.places.PlacesServiceStatus.OK){// sheck status
+                     er(s);
+                     return;
+                     }
+
+               for(var i=0;i<r.length;i++)
+                 splace.push(r[i]);
+
+               if(p.hasNextPage){//inde]x page
+                    p.nextPage();
+                    }
+                else{
+                      su(splace);
+                    }
+
+
+            });
+
+        };
+
+      };
+
+      function umarkf(){
+
+        var my;
+      if(self.umoption !== null){
+             my = new google.maps.Marker(self.umoption);
+             }else{
+             my = new google.maps.Marker({
+              position: wmap.getCenter(),
+              icon: {
+                  path: google.maps.SymbolPath.CIRCLE,
+                  scale: 5,
+                 strokeColor: 'blue'},
+               draggable: false,
+               map: wmap});
+            }
+          return my;
+      }
+
+      function mapele(ak){// create gmap api
+      var scriptEle = document.createElement('script');
+      scriptEle.setAttribute('async','');
+      scriptEle.setAttribute('defer','');
+      scriptEle.setAttribute('src','https://maps.googleapis.com/maps/api/js?key='+ak+'&callback=initMap&libraries=places,visualization');
+      return scriptEle; }
+
+
+
+
+    };//end wgmap
+
  var geol = new geo({enableHighAccuracy: true,maximunAge: 600,timeOut:300});
-    
+
     function gc() {
   console.log(geol.coords,geol.error);
   setTimeout(gc, 10000);
@@ -158,34 +250,34 @@
  $("form").submit(function(event) { // You can change "form" to whatever ID/class your form has
     event.preventDefault();
 });
- 
+
     var gmap=new wgmap('AIzaSyCR-fcDARXL_RqH9AipjGChFIpLDL5lOR8');
-    
+
 function initMap(){
-    
-  
+
+
  var logm= document.getElementById("logm");
- 
+
  logm.innerHTML="start log";
   var cord = {};
-  
 
-    
+
+
     if(geol.coords===null){
         return setTimeout(initMap,500);
-      
-    }else{
-      
-        coordController();
-      
-    }
-      
-  
-  
-  
-    
 
-  
+    }else{
+
+        coordController();
+
+    }
+
+
+
+
+
+
+
   var map=gmap.map(document.getElementById('map'), {
           center: mapcenter(),
           zoom:14 ,
@@ -194,43 +286,43 @@ function initMap(){
           zoomControlOptions:{position: google.maps.ControlPosition.TOP_RIGHT}
                 },
            true);
-  
+
   map.setOptions({draggable: false});
-  
+
   var markeryou = gmap.umark;
-  
+
   updatemap();
-  
+
   //create element
-  
-  
-  
-  
+
+
+
+
   wTemplate('mapsrc','mapsrc-tem');
   wTemplate('pickmeform','pickmebutton-tem');
   logm.innerHTML="seraching map";
   //map search
-  
-  
-
-   
 
 
-   
+
+
+
+
+
   $('#myModal').on('show.bs.modal',function(){mapFS(false);});
   document.getElementById('keywclr').onclick=function(){
 
    document.getElementById('keyw').value='';
   };
     document.getElementById('mapsrc').onsubmit=function(){
-   
+
    $('#myModal').modal('show');
   };
   //end event
-  
+
 //start search
   function mapFS(sb){
-   
+
      var w10ele =document.getElementById('w10map');
       var rmap=document.getElementById('rmapholder');
      var pickagainbutton = document.getElementById('pickagain');
@@ -239,12 +331,12 @@ function initMap(){
      document.getElementById('noplacefound').innerHTML='';
     ky = ky.trim();
     pickagainbutton.disabled=false;
- 
-   
+
+
     if(sb==false){
       var keyword = 'eat|restaurant|food|drink';
       if(ky.length>0){
-        
+
          var option={bounds:map.getBounds(),
        keyword:ky, type:'restaurant',
         openNow:true};}
@@ -252,10 +344,10 @@ function initMap(){
         var option={bounds:map.getBounds(),
        keyword:keyword, type:'restaurant',
         openNow:true};
-      
+
       }
-      
-    
+
+
       gmap.radarS(option,function(r){
           ssu(r);
       },
@@ -263,44 +355,44 @@ function initMap(){
        serr(status);
       }
         );
-      
-      
+
+
     }
-    
+
     else{
-   
+
       var option= {bounds:map.getBounds(),
                     keyword:keyword,
                     openNow:true};
       gmap.nearbySAll(option,function(r){
-         
+
         ssu(r);
       },
       function(status){
              serr(status);
-      
-      }); 
+
+      });
     }
-    
+
     function ssu(rs){
-      
+
       console.log(rs);
-        
+
        var placepass=[];
-      
+
 
       rex();
          pickagainbutton.onclick=function(){
          rex();
-            
+
           };
          function rex(){
             if(rs.length>0){
-                
+
            var rplace1 = rplace(rs);
-              
+
               var rpc= rs.indexOf(rplace1);
-             
+
               rs.splice(rpc,1);
             //  console.log(rs,rpc);
            var llw=rplace1.geometry.location;
@@ -314,11 +406,11 @@ function initMap(){
             pickagainbutton.disabled=true;
             }
           }
-      
-    
-    
+
+
+
     }
-    
+
     function serr(s1){
             console.error(s1);
             rmap.innerHTML='';
@@ -326,23 +418,23 @@ function initMap(){
            document.getElementById('noplacefound').innerHTML='Try Zoom out , no place to eat nearby';
             pickagainbutton.disabled=true;
     }
-    
-    
+
+
   }
   // end nearby search function
-  
+
   // element function
-  
+
        function createrplace(ele,rid){//create emebed map to element
          var ys = getDocumentSize();
            var iframe='<iframe  frameborder="0" style="border:0;'+'height:'+ys.y*0.5 +'px;"';
               iframe=iframe+' src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBWu5ezWN1HrruH3LXGI1L9JjcmQmX-Mks&q=';
-          
+
          iframe = iframe +'place_id:'+rid+'"allowfullscreen></iframe>';
            ele.innerHTML=iframe;
-        
+
        }
-  
+
    function createrdir(ele,rid){//create emebed diretcion to element
            var iframe='<iframe  frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyBWu5ezWN1HrruH3LXGI1L9JjcmQmX-Mks&origin=';
           var ori = markeryoucenter();
@@ -350,126 +442,126 @@ function initMap(){
          iframe = iframe +'&destination=place_id:'+rid+'"allowfullscreen></iframe>';
            ele.innerHTML=iframe;
        }
-  
+
   function letgo(ele,r){//create let go button diredction
       ele.onclick=function(){
-        
+
         var ull= markeryoucenter();
-        
+
         var gmapdir= 'https://www.google.com.my/maps/dir/';
         var gmapdir= gmapdir +ull.lat+','+ull.lng+'/';//add ori position
         var gmapdir= gmapdir +r.geometry.location.lat+','+r.geometry.location.lng;
-        
+
         window.open(gmapdir);
       };
   }
    function w10map(ele,to){//window 10 map button create
-     
+
      var map= '<a class="btn btn-warning col-xs-12" target="_blank" href="';
      var url ='http://bing.com/maps/default.aspx?rtp=~pos.'+to.lat()+'_'+to.lng();
      map = map + url;
      map=  map+'" role="button">Use window 10 Maps app</a>';
    ele.innerHTML=map;
-   
+
    }
   function w10mapapp(ele,to){//window 10 map button create
-     
+
      var map= '<a class="btn btn-warning col-xs-12" href=" ';
      var url ='bingmaps:?rtp=~pos.'+to.lat()+'_'+to.lng();
      map = map + url;
      map=  map+'" role="button">Use window 10 Maps app</a>';
    ele.innerHTML=map;
-   
+
    }
-  
-  
+
+
   //helper
     function filterByPlaceName(place,name){
               var pl=[];
-            
+
                var lname = name.toLowerCase();
-                
-               for(var i=0;i<place.length;i++){ 
+
+               for(var i=0;i<place.length;i++){
                     var ln = place[i].name.toLowerCase();
-                  
-                
+
+
                      if(ln.indexOf(lname)>-1){
                           pl.push(place[i]);
                      }
-                 
-                 
+
+
                    }
               return pl;
           }
-  
+
     function rplace(r){
           var pplaceId = Math.floor(Math.random()*r.length);
       //console.log(pplaceId);
           return r[pplaceId];
       }
-  
-  
-  
-  
-  
+
+
+
+
+
   function updatemap(){
-    
+
    markeryou.setPosition(markeryoucenter());
-    //map.setCenter(mapcenter()); 
+    //map.setCenter(mapcenter());
    map.panTo(mapcenter());
-    setTimeout(updatemap,700); 
-    
+    setTimeout(updatemap,700);
+
   };
- 
+
   function coordController(){
-   
+
      cord.latitude=geol.coords.latitude;
       cord.longitude=geol.coords.longitude;
       // console.log(typeof(cord.latitude));
     setTimeout(coordController,0);
-    
+
   }
-  
+
   function markeryoucenter(){
       var lat =round(cord.latitude,5);
       var lng =round(cord.longitude,5);
       return {lat: lat, lng:lng};
-      
+
   }
-  
+
   function mapcenter(){
 
-     
+
       var lat =round(cord.latitude,4);
       var lng =round(cord.longitude,4);
       return {lat: lat, lng:lng};
-      
+
   }
-  
-  
 
-  
-  
 
-      
+
+
+
+
+
  function round(value, decimals) {
   return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }
-  
-      
-} 
-    
+
+
+}
+
 
 function getDocumentSize(){
  return {y:$(document).height(),x:$(document).width()};
 }
-    
-    
+
+
  function wTemplate(id,lid){
  document.getElementById(id).innerHTML = document.getElementById(lid).innerHTML;
  }
   </script>
-  
+
 
 
 
@@ -478,4 +570,3 @@ function getDocumentSize(){
 </body>
 
 </html>
-  
