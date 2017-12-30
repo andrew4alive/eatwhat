@@ -140,14 +140,49 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-
+<!--
   <script src="https://gitcdn.xyz/repo/andrew4alive/html5-geo/master/geo.js"></script>
 
-  <!--<script src="https://gitcdn.xyz/cdn/andrew4alive/wgmap/ac9e705d178227c8a85752cc6846bad727a0c7c4/wgmap.js"></script>
+  <script src="https://gitcdn.xyz/cdn/andrew4alive/wgmap/ac9e705d178227c8a85752cc6846bad727a0c7c4/wgmap.js"></script>
   -->
   <!--
     <script src="https://rawgit.com/andrew4alive/wgmap/master/wgmap.js"></script>
 -->
+    <script>
+        var geo = function(goption) {
+  var self = this;
+  self.coords = null;
+  self.support=false;
+  self.error= false;
+ 
+  function g() {
+    if (navigator.geolocation) {
+        
+        self.support=true;
+        
+      navigator.geolocation.watchPosition(
+          showPosition,
+      function(e){
+          
+          self.error=e;
+      }
+      
+      ,
+      goption
+      
+      );
+    } else {
+      console.log("Geolocation is not supported by this browser.");
+    }
+  
+  }
+ 
+  function showPosition(position) {
+    self.coords = position.coords;
+  }
+  g();
+};
+     </script>
 <script>
 //gmap lib 
     function wgmap (apikey){
