@@ -220,6 +220,18 @@
                       su(r);
             });
         };
+        
+          self.radarSr1 =function(option,su,er ){
+
+            service.nearbySearch(option,function(r,s){
+                 if(s!==google.maps.places.PlacesServiceStatus.OK){// sheck status
+                     er(s);
+                     return;
+                     }
+
+                      su(r);
+            });
+        };
 
         self.nearbySAll=function(option,su,er){
             var splace=[];
@@ -383,7 +395,7 @@ function initMap(){
       }
 
 
-      gmap.radarS(option,function(r){
+      gmap.radarSr1(option,function(r){
           ssu(r);
       },
       function(status){
